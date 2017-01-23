@@ -20,13 +20,6 @@ ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[cyan]%} ✭"
 ZSH_THEME_GIT_PROMPT_SHA_BEFORE="➤ %{$fg_bold[yellow]%}"
 ZSH_THEME_GIT_PROMPT_SHA_AFTER="%{$reset_color%}"
 
-function prompt_char() {
-  git branch >/dev/null 2>/dev/null && echo "%{$fg[green]%}±%{$reset_color%}" && return
-  hg root >/dev/null 2>/dev/null && echo "%{$fg_bold[red]%}☿%{$reset_color%}" && return
-  darcs show repo >/dev/null 2>/dev/null && echo "%{$fg_bold[green]%}❉%{$reset_color%}" && return
-  echo "%{$fg[cyan]%}◯%{$reset_color%}"
-}
-
 # Colors vary depending on time lapsed.
 ZSH_THEME_GIT_TIME_SINCE_COMMIT_SHORT="%{$fg[green]%}"
 ZSH_THEME_GIT_TIME_SHORT_COMMIT_MEDIUM="%{$fg[yellow]%}"
@@ -79,7 +72,18 @@ function git_time_since_commit() {
     fi
 }
 
-PROMPT='%{$fg[blue]%}%m%{$reset_color%} 贤 %{$fg[cyan]%}%~ %{$reset_color%}$(git_prompt_short_sha)$(git_prompt_info)
-%{$fg[red]%}%!%{$reset_color%} $(prompt_char) : '
+function build_prompt() {
+    my_zsh_theme_git_flag=`git branch 1>/dev/null 2>&1;echo $?;`
+    if [[ $my_zsh_theme_git_flag == 0 ]]
+    then
+        echo "%{$fg[blue]%}%m%{$reset_color%} 贤 %{$fg[cyan]%}%~ %{$reset_color%} $(git_prompt_short_sha)$(git_prompt_info)
+%{$fg[red]%}%!%{$reset_color%} %{$fg[green]%}±%{$reset_color%} : "
+    else
+        echo "%{$fg[blue]%}%m%{$reset_color%} 贤 %{$fg[cyan]%}%~ %{$reset_color%}
+%{$fg[red]%}%!%{$reset_color%} %{$fg[cyan]%}◯%{$reset_color%} : "
+    fi
+}
 
-RPROMPT='${return_status}$(git_time_since_commit)$(git_prompt_status)%{$reset_color%}'
+PROMPT='$(build_prompt)'
+
+RPROMPT='${return_status}%{$fg[yellow]%}%*%{$reset_color%} '
