@@ -14,19 +14,19 @@ function replace()
     # argument in `replace` as order in `ln` 
     echo -e "[info] replace local config $2"
     mv -f $2 $bak_dir 2>/dev/null
-    ln -sf $@
+    ln -s $@
 }
 
 function config-zsh()
 {
     echo -e "\nConfig zsh"
-    # for shell color
-    replace $dot_file_path/zsh/dircolors.txt                    ~/.dircolors
-    replace $dot_file_path/zsh/base16-tomorrow-night.sh         ~/.base16-tomorrow-night.sh
-
     # for oh-my-zsh
     replace $dot_file_path/zsh/.zshrc                           ~/.zshrc
     replace $dot_file_path/zsh/oh-my-zsh                        ~/.oh-my-zsh
+
+    # for shell color
+    replace $dot_file_path/zsh/dircolors.txt                    ~/.oh-my-zsh/custom/dircolors
+    replace $dot_file_path/zsh/base16-tomorrow-night.sh         ~/.oh-my-zsh/custom/base16-tomorrow-night.sh
 
     # for custom zsh additions
     replace $dot_file_path/zsh/themes                           ~/.oh-my-zsh/custom/themes
@@ -54,8 +54,8 @@ function main()
     echo -e "Start setting my personal configration"
     check-env
     config-zsh
-    #config-vim
-    #config-pip
+    config-vim
+    config-pip
     echo -e "\nEnd configration"
 }
 

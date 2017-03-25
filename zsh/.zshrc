@@ -4,12 +4,13 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 export TERM=xterm-256color
+export DISPLAY=:0
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-eval $(dircolors -b ~/.dircolors)
-zsh ~/.base16-tomorrow-night.sh
+eval $(dircolors -b ~/.oh-my-zsh/custom/dircolors)
+zsh ~/.oh-my-zsh/custom/base16-tomorrow-night.sh
 ZSH_THEME="smt"
 
 # Uncomment the following line to use case-sensitive completion.
@@ -89,3 +90,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias vi="vim"
 
+alias cnpm="npm --registry=https://registry.npm.taobao.org \
+  --cache=$HOME/.npm/.cache/cnpm \
+  --disturl=https://npm.taobao.org/dist \
+  --userconfig=$HOME/.cnpmrc"
