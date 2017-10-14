@@ -4,7 +4,7 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 export TERM=xterm-256color
-export DISPLAY=:0
+#export DISPLAY=:0
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -55,8 +55,17 @@ ZSH_THEME="smt"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git ubuntu colored-man-pages extract z command-not-found)
-plugins+=(zsh-nvm zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git colored-man-pages extract z command-not-found tmux)
+plugins+=(zsh-nvm zsh-autosuggestions zsh-syntax-highlighting zsh_reload)
+
+version_info=`cat /etc/*-release`
+if [[ `echo $version_info | grep -i "ubuntu"` ]]; 
+then
+    plugins+=(ubuntu)
+elif [[ `echo $version_info | grep -i "arch"` ]]; 
+then
+    plugins+=(archlinux)
+fi
 
 source $ZSH/oh-my-zsh.sh
 
@@ -94,3 +103,5 @@ alias cnpm="npm --registry=https://registry.npm.taobao.org \
   --cache=$HOME/.npm/.cache/cnpm \
   --disturl=https://npm.taobao.org/dist \
   --userconfig=$HOME/.cnpmrc"
+
+command -v screenfetch > /dev/null 2>&1 && screenfetch
