@@ -21,9 +21,9 @@ function config-zsh()
 {
     echo -e "\nConfig zsh"
     # for oh-my-zsh
-    replace $dot_file_path/zshrc                            ~/.zshrc
-    replace $dot_file_path/oh-my-zsh                        ~/.oh-my-zsh
-    replace $dot_file_path/custom                           ~/.oh-my-zsh/custom/custom
+    replace $zsh_file_path/zshrc                            ~/.zshrc
+    replace $zsh_file_path/oh-my-zsh                        ~/.oh-my-zsh
+    replace $zsh_file_path/custom                           ~/.oh-my-zsh/custom/custom
 }
 
 
