@@ -1,7 +1,51 @@
+call plug#begin('~/.vim/plugged')
+
+" On-demand loading
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+
+" Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries'}
+
+" auto complete plug; deoplete for vim8.0 need `has('python3')` for async
+" `pip3 install neovim` is required or `pacin python-neovim` in archlinux
+Plug 'Shougo/deoplete.nvim'
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
+
+" complete for golang
+Plug 'zchee/deoplete-go', { 'do': 'make'}
+
+" Track the engine.
+" Plugin 'SirVer/ultisnips'
+
+" Snippets are separated from the engine. Add this if you want them:
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
+" Initialize plugin system
+call plug#end()
+
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_yarp = 1
+let g:deoplete#enable_camel_case = 1
+let g:deoplete#enable_refresh_always = 1
+inoremap <silent><expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+:map <F2> :NERDTreeToggle<CR>
+:map <F9> :GoImports<CR>:GoFmt<CR>:GoBuild<CR>
+:map <F10> :GoImports<CR>:GoFmt<CR>:GoRun<CR>
+
 set nu
 set hlsearch
 set ts=4
 set expandtab
+set backspace=indent,eol,start
 
 syntax enable
 set t_Co=256
@@ -10,3 +54,6 @@ colorscheme Tomorrow-Night
 
 " set viminfo location 
 set viminfo+=n~/.vim/viminfo
+
+" set python3 first
+set pyxversion=0
