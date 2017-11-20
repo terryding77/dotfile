@@ -24,6 +24,7 @@ function config-zsh()
     replace $zsh_file_path/zshrc                            ~/.zshrc
     replace $zsh_file_path/oh-my-zsh                        ~/.oh-my-zsh
     replace $zsh_file_path/custom                           ~/.oh-my-zsh/custom/custom
+    touch ~/.zsh_custom && chmod +x ~/.zsh_custom
 }
 
 
