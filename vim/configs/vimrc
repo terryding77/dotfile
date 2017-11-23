@@ -22,6 +22,18 @@ Plug 'zchee/deoplete-go', { 'do': 'make'}
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
+" Tagbar: a class outline viewer for Vim
+Plug 'majutsushi/tagbar'
+
+" zoom a pane by 'ctrl-w o'
+Plug 'vim-scripts/ZoomWin'
+
+" mini buffer expl
+Plug 'fholgado/minibufexpl.vim'
+
+" unload file buffer without destory window layout
+Plug 'qpkorr/vim-bufkill'
+
 " Initialize plugin system
 call plug#end()
 
@@ -37,15 +49,28 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
-:map <F2> :NERDTreeToggle<CR>
+" close vim if the only window left open is a NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+:map <F2> :NERDTreeToggle<CR>:MBEOpenAll<CR>
+nmap <F8> :TagbarToggle<CR>
 :map <F9> :GoImports<CR>:GoFmt<CR>:GoBuild<CR>
-:map <F10> :GoImports<CR>:GoFmt<CR>:GoRun<CR>
+:map <F10> :wa \|!rm ./routers/commentsRouter*.go<CR>:!bee run goWebTest<CR>
+
+nnoremap <silent> <C-w>w :ZoomWin<CR>
+
+" set ctrl-hjkl to switch splited windows
+map <c-h> <c-w>h
+map <c-j> <c-w>j
+map <c-k> <c-w>k
+map <c-l> <c-w>l
 
 set nu
 set hlsearch
 set ts=4
 set expandtab
 set backspace=indent,eol,start
+set mouse=a
 
 syntax enable
 set t_Co=256
@@ -55,5 +80,39 @@ colorscheme Tomorrow-Night
 " set viminfo location 
 set viminfo+=n~/.vim/viminfo
 
+" show last edit position when we reopen file 
+au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif  
+
 " set python3 first
 set pyxversion=0
+
+" tagbar with golang settings
+" ensure ctags exist.(`pacin ctags` for archlinux)
+" go get -u github.com/jstemmer/gotags
+let g:tagbar_type_go = {
+	\ 'ctagstype' : 'go',
+	\ 'kinds'     : [
+		\ 'p:package',
+		\ 'i:imports:1',
+		\ 'c:constants',
+		\ 'v:variables',
+		\ 't:types',
+		\ 'n:interfaces',
+		\ 'w:fields',
+		\ 'e:embedded',
+		\ 'm:methods',
+		\ 'r:constructor',
+		\ 'f:functions'
+	\ ],
+	\ 'sro' : '.',
+	\ 'kind2scope' : {
+		\ 't' : 'ctype',
+		\ 'n' : 'ntype'
+	\ },
+	\ 'scope2kind' : {
+		\ 'ctype' : 't',
+		\ 'ntype' : 'n'
+	\ },
+	\ 'ctagsbin'  : 'gotags',
+	\ 'ctagsargs' : '-sort -silent'
+\ }
