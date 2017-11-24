@@ -52,10 +52,11 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 " close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-:map <F2> :NERDTreeToggle<CR>:MBEOpenAll<CR>
+nmap <F2> :NERDTreeToggle<CR>:MBEOpenAll<CR>
 nmap <F8> :TagbarToggle<CR>
-:map <F9> :GoImports<CR>:GoFmt<CR>:GoBuild<CR>
-:map <F10> :wa \|!rm ./routers/commentsRouter*.go<CR>:!bee run goWebTest<CR>
+nmap <F9> :GoImports<CR>:GoFmt<CR>:GoBuild<CR>
+nmap <F10> :wa<CR>:GoRun<CR>
+nmap <F5> :wa \|!rm ./routers/commentsRouter*.go<CR>:!bee run goWebTest<CR>
 
 nnoremap <silent> <C-w>w :ZoomWin<CR>
 
@@ -116,3 +117,9 @@ let g:tagbar_type_go = {
 	\ 'ctagsbin'  : 'gotags',
 	\ 'ctagsargs' : '-sort -silent'
 \ }
+
+" set tags search from current directory to root
+set tags=tags;
+
+" set transparent
+hi Normal ctermbg=NONE
