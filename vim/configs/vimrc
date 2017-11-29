@@ -15,6 +15,9 @@ Plug 'roxma/vim-hug-neovim-rpc'
 " complete for golang
 Plug 'zchee/deoplete-go', { 'do': 'make'}
 
+" complete for java
+Plug 'artur-shaik/vim-javacomplete2'
+
 " Track the engine.
 " Plugin 'SirVer/ultisnips'
 
@@ -168,7 +171,7 @@ let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#whitespace#symbol = '!'
 let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
 let g:airline#extensions#tabline#show_tab_nr = 1
-let g:airline#extensions#tabline#formatter = 'default'
+let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#tabline#buffer_nr_show = 0
 let g:airline#extensions#tabline#fnametruncate = 16
 let g:airline#extensions#tabline#fnamecollapse = 2
@@ -185,3 +188,20 @@ nmap <leader>9 <Plug>AirlineSelectTab9
 nmap <leader>- <Plug>AirlineSelectPrevTab
 nmap <leader>+ <Plug>AirlineSelectNextTab
 nmap <leader>= <Plug>AirlineSelectNextTab
+"
+"" javacomplete2 custom config
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
+"An option to make javacomplete2 use python3 interpreter instead of python2, default value is 0.
+let g:JavaComplete_UsePython3 = 1
+""To enable smart (trying to guess import option) inserting class imports with F4, add:
+autocmd FileType java nmap <F4> <Plug>(JavaComplete-Imports-AddSmart)
+autocmd FileType java imap <F4> <Plug>(JavaComplete-Imports-AddSmart)
+""To enable usual (will ask for import option) inserting class imports with F5, add:
+autocmd FileType java nmap <F5> <Plug>(JavaComplete-Imports-Add)
+autocmd FileType java imap <F5> <Plug>(JavaComplete-Imports-Add)
+""To add all missing imports with F6:
+autocmd FileType java nmap <F6> <Plug>(JavaComplete-Imports-AddMissing)
+autocmd FileType java imap <F6> <Plug>(JavaComplete-Imports-AddMissing)
+""To remove all unused imports with F7:
+autocmd FileType java nmap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
+autocmd FileType java imap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
