@@ -110,7 +110,9 @@ set viminfo+=n~/.vim/viminfo
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif  
 
 " set python3 first
-set pyxversion=0
+if v:version > 800
+    set pyxversion=0
+endif
 
 " tagbar with golang settings
 " ensure ctags exist.(`pacin ctags` for archlinux)
