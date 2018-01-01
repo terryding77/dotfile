@@ -55,6 +55,10 @@ plugins=(
     zsh_reload
 )
 
+# load plugins depending on system 
+# this file should load before oh-my-zsh for loading system specific zsh plugins
+source ${ZSH_CUSTOM}/os-detective.zsh
+
 # load oh my zsh file
 source $ZSH/oh-my-zsh.sh
 
