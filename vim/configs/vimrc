@@ -78,8 +78,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 nmap <F2> :NERDTreeToggle<CR>
 nmap <F8> :TagbarToggle<CR>
 nmap <F9> :GoImports<CR>:GoFmt<CR>:GoBuild<CR>
-nmap <F10> :wa<CR>:GoRun<CR>
-nmap <F5> :wa \|!rm ./routers/commentsRouter*.go<CR>:!bee run goWebTest<CR>
+nmap <F10> :wa<CR>:!bee run damaijia/samdue -gendoc=true<CR>
 
 nnoremap <silent> <C-w>w :ZoomWin<CR>
 
@@ -155,13 +154,13 @@ hi Normal ctermbg=NONE
 let mapleader = " "
 
 " vim-go custom mappings
-au filetype go nmap <leader>s <plug>(go-implements)
+au filetype go nmap <leader>s :w<CR><plug>(go-implements)
 "au filetype go nmap <leader>i <plug>(go-info)
 "au filetype go nmap <leader>gd <plug>(go-doc)
 "au filetype go nmap <leader>gv <plug>(go-doc-vertical)
-au filetype go nmap <leader>r <plug>(go-run)
-au filetype go nmap <leader>b <plug>(go-build)
-au filetype go nmap <leader>t <plug>(go-test)
+au filetype go nmap <leader>r :w<CR><plug>(go-imports)<plug>(go-run)
+au filetype go nmap <leader>b :w<CR><plug>(go-imports)<plug>(go-build)
+au filetype go nmap <leader>t :w<CR><plug>(go-test)
 au filetype go nmap <leader>c <plug>(go-coverage)
 "au filetype go nmap <leader>ds <plug>(go-def-split)
 "au filetype go nmap <leader>dv <plug>(go-def-vertical)
@@ -207,3 +206,20 @@ autocmd FileType java imap <F6> <Plug>(JavaComplete-Imports-AddMissing)
 ""To remove all unused imports with F7:
 autocmd FileType java nmap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
 autocmd FileType java imap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
+
+" gitgutter keymap
+nmap <leader>+ <Plug>GitGutterNextHunk
+nmap <leader>= <Plug>GitGutterNextHunk
+nmap <leader>- <Plug>GitGutterPrevHunk
+
+" <F5> 编译和运行C
+au filetype cpp nmap <leader>r :call CompileRunGpp()<CR>
+au filetype c nmap <leader>r :call CompileRunGcc()<CR>
+func! CompileRunGcc()
+    exec "w"
+    exec "!gcc % -o %< && ./%<"
+endfunc
+func! CompileRunGpp()
+    exec "w"
+    exec "!g++ % -o %< && ./%<"
+endfunc
