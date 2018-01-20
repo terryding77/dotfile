@@ -41,17 +41,18 @@ HIST_STAMPS="yyyy-mm-dd"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 plugins=(   
-    git 
-    golang
+    autojump
+    command-not-found
+    common-aliases
     colored-man-pages
     extract
-    command-not-found
+    git 
+    golang
+    sudo
     tmux
-    autojump
-    common-aliases
-    zsh-nvm
     zsh-autosuggestions
     zsh-syntax-highlighting
+    zsh-nvm
     zsh_reload
 )
 
