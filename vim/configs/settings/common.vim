@@ -74,7 +74,7 @@ nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
 " force recomile with syntastic  
 "nnoremap <leader>lo :lopen<CR> "open locationlist  
 "nnoremap <leader>lc :lclose<CR>    "close locationlist  
-inoremap <leader><leader> <C-x><C-o>  
+"inoremap <leader><leader> <C-x><C-o>  
 "在注释输入中也能补全  
 let g:ycm_complete_in_comments = 1  
 "在字符串输入中也能补全  
@@ -84,3 +84,38 @@ let g:ycm_collect_identifiers_from_comments_and_strings = 0
 let g:clang_user_options='|| exit 0'  
 "nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR> " 跳转到定义处  
 " #####YouCompleteMe Configure
+"
+" ctrlp 
+let g:ctrlp_map = '<leader>p'
+let g:ctrlp_cmd = 'CtrlP'
+map <leader>f :CtrlPMRU<CR>
+let g:ctrlp_custom_ignore = {
+    \ 'dir':  '\v[\/]\.(git|hg|svn|rvm)$',
+    \ 'file': '\v\.(exe|so|dll|zip|tar|tar.gz|pyc)$',
+    \ }
+let g:ctrlp_working_path_mode=0
+let g:ctrlp_match_window_bottom=1
+let g:ctrlp_max_height=15
+let g:ctrlp_match_window_reversed=0
+let g:ctrlp_mruf_max=500
+let g:ctrlp_follow_symlinks=1
+
+" ack.vim
+" `pacin the_silver_searcher`
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+
+function Search(string) abort
+  let saved_shellpipe = &shellpipe
+  let &shellpipe = '>'
+  try
+    execute 'Ack!' shellescape(a:string, 1)
+  finally
+    let &shellpipe = saved_shellpipe
+  endtry
+endfunction
+
+"cnoreabbrev Ack Ack!
+"nnoremap <Leader>a :Ack!<Space>
+nnoremap <Leader>a :call Search("")<left><left>

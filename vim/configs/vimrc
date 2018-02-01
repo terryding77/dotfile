@@ -1,6 +1,7 @@
 source ~/.vim/settings/vim-plug.vim
 source ~/.vim/settings/basic.vim
 source ~/.vim/settings/common.vim
+source ~/.vim/settings/go.vim
 source ~/.vim/settings/python-mode.vim
 
 " Use deoplete.

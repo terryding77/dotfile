@@ -58,5 +58,10 @@ Plug 'tpope/vim-fugitive'
 " async lint
 Plug 'w0rp/ale'
 
+" file search
+Plug 'ctrlpvim/ctrlp.vim'
+" code search
+Plug 'mileszs/ack.vim'
+
 " Initialize plugin system
 call plug#end()
