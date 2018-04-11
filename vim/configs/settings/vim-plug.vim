@@ -3,6 +3,8 @@ call plug#begin('~/.vim/plugged')
 " On-demand loading
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+"Plug 'ryanoasis/vim-devicons'
 
 Plug 'suan/vim-instant-markdown',
       \ { 'do': 'npm -g install instant-markdown-d' }                 "   Instantly preview markdown
@@ -64,6 +66,9 @@ Plug 'ctrlpvim/ctrlp.vim'
 " code search
 Plug 'mileszs/ack.vim'
 "Plug 'wsdjeg/FlyGrep.vim'
+
+" start page 
+Plug 'mhinz/vim-startify'
 
 " code leader space prettify
 Plug 'Yggdroot/indentLine'

@@ -167,3 +167,23 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 nnoremap <silent> <C-w>w :ZoomWin<CR>
+
+" nerdtree git plugin
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ "Unknown"   : "?"
+    \ }
+
+" nerdtree syntax highlight
+"let g:NERDTreeFileExtensionHighlightFullName = 1
+"let g:NERDTreeExactMatchHighlightFullName = 1
+"let g:NERDTreePatternMatchHighlightFullName = 1
+"let g:NERDTreeHighlightFolders = 1 " enables folder icon highlighting using exact match
+"let g:NERDTreeHighlightFoldersFullName = 1 " highlights the folder name
