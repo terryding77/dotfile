@@ -29,6 +29,8 @@ let g:tagbar_type_go = {
 	\ 'ctagsargs' : '-sort -silent'
 \ }
 
+" ale for go
+let g:ale_linters = {'go': ['golint', 'go vet', 'go build']}
 
 " vim-go custom mappings
 au filetype go nmap <leader>s :w<CR><plug>(go-implements)

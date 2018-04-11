@@ -30,21 +30,31 @@ nmap <leader>+ <Plug>AirlineSelectNextTab
 nmap <leader>= <Plug>AirlineSelectNextTab
 
 " ale lint
-let g:ale_sign_error = 'X'
-let g:ale_sign_warning = '?'
-let g:ale_completion_enabled = 1
+"ale
+"始终开启标志列
+let g:ale_sign_column_always = 1
+let g:ale_set_highlights = 0
+"自定义error和warning图标⚡
+let g:ale_sign_error = '✗'
+let g:ale_sign_warning = '⚠' 
+"在vim自带的状态栏中整合ale
+let g:ale_statusline_format = ['✗ %d', '⚠ %d', '✔ OK']
+"显示Linter名称,出错或警告等相关信息
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
+"普通模式下，sp前往上一个错误或警告，sn前往下一个错误或警告
+nmap sp <Plug>(ale_previous_wrap)
+nmap sn <Plug>(ale_next_wrap)
+"<Leader>s触发/关闭语法检查
+"nmap <Leader>s :ALEToggle<CR>
+"<Leader>d查看错误或警告的详细信息
+nmap <Leader>e :ALEDetail<CR>
+let g:ale_completion_enabled = 1
 let g:ale_swift_swiftlint_use_defaults = 1
 let g:ale_open_list = 0
 let g:ale_lint_delay = 1000
-let g:ale_linters = {
-  \ 'go': ['golint', 'go vet', 'go build'],
-  \ 'python': ['pylint'],
-  \ 'javascript': ['eslint'],
-  \ }
+let g:airline#extensions#ale#enabled = 1
 
 " you complete me
 " #####YouCompleteMe Configure   
@@ -187,3 +197,30 @@ let g:NERDTreeIndicatorMapCustom = {
 "let g:NERDTreePatternMatchHighlightFullName = 1
 "let g:NERDTreeHighlightFolders = 1 " enables folder icon highlighting using exact match
 "let g:NERDTreeHighlightFoldersFullName = 1 " highlights the folder name
+
+
+
+"Plugin 'kien/rainbow_parentheses.vim'
+let g:rbpt_colorpairs = [
+                        \ ['brown',       'RoyalBlue3'],
+                        \ ['Darkblue',    'SeaGreen3'],
+                        \ ['darkgray',    'DarkOrchid3'],
+                        \ ['darkgreen',   'firebrick3'],
+                        \ ['darkcyan',    'RoyalBlue3'],
+                        \ ['darkred',     'SeaGreen3'],
+                        \ ['darkmagenta', 'DarkOrchid3'],
+                        \ ['brown',       'firebrick3'],
+                        \ ['gray',        'RoyalBlue3'],
+                        \ ['darkmagenta', 'DarkOrchid3'],
+                        \ ['Darkblue',    'firebrick3'],
+                        \ ['darkgreen',   'RoyalBlue3'],
+                        \ ['darkcyan',    'SeaGreen3'],
+                        \ ['darkred',     'DarkOrchid3'],
+                        \ ['red',         'firebrick3'],
+                        \ ]
+let g:rbpt_max = 16
+let g:rbpt_loadcmd_toggle = 0
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces

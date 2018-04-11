@@ -36,8 +36,9 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
 " python
-Plug 'python-mode/python-mode'
+"Plug 'python-mode/python-mode', { 'branch': 'develop' }
 Plug 'davidhalter/jedi-vim'
+Plug 'tell-k/vim-autopep8'
 
 " Tagbar: a class outline viewer for Vim
 Plug 'majutsushi/tagbar'
@@ -73,5 +74,9 @@ Plug 'mhinz/vim-startify'
 " code leader space prettify
 Plug 'Yggdroot/indentLine'
 Plug 'nathanaelkane/vim-indent-guides'
+
+"Plugin 'kien/rainbow_parentheses.vim'
+Plug 'kien/rainbow_parentheses.vim'
+
 " Initialize plugin system
 call plug#end()
