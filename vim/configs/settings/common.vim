@@ -132,5 +132,38 @@ let g:indentLine_first_char = '┆'              "设置对齐线的首字符
 let g:indentLine_showFirstIndentLevel = 0   "显示对齐线首字符
 
 let g:indent_guides_enable_on_vim_startup = 1
- let g:indent_guides_color_change_percent = 10
- let g:indent_guides_guide_size = 1
+let g:indent_guides_color_change_percent = 10
+let g:indent_guides_guide_size = 1
+
+" Bufkill
+nmap <leader>x :BD<CR>
+
+" gitgutter keymap
+nmap <leader>+ <Plug>GitGutterNextHunk
+nmap <leader>= <Plug>GitGutterNextHunk
+nmap <leader>- <Plug>GitGutterPrevHunk
+let g:gitgutter_sign_added = 'A'
+let g:gitgutter_sign_modified = 'M'
+let g:gitgutter_sign_removed = 'D'
+let g:gitgutter_sign_removed_first_line = 'DF'
+let g:gitgutter_sign_modified_removed = 'MD'
+
+" close vim if the only window left open is a NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+nmap <F2> :NERDTreeToggle<CR>
+nmap <F8> :TagbarToggle<CR>
+
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_yarp = 1
+let g:deoplete#enable_camel_case = 1
+let g:deoplete#enable_refresh_always = 1
+inoremap <silent><expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+nnoremap <silent> <C-w>w :ZoomWin<CR>

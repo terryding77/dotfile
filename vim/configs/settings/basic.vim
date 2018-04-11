@@ -55,3 +55,11 @@ function! AutoHighlightToggle()
   return 1
  endif
 endfunction
+
+" set python3 first
+if v:version > 800
+    set pyxversion=0
+endif
+
+" set tags search from current directory to root
+set tags=tags;
