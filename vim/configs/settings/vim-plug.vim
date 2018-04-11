@@ -20,6 +20,7 @@ Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
 
 Plug 'zchee/deoplete-go', { 'do': 'make'}                     " golang
+Plug 'zchee/deoplete-jedi'                                    " python
 Plug 'Shougo/neco-vim', {'for': 'vim'}                        " Vim
 Plug 'wellle/tmux-complete.vim'                               " tmux panes
 
@@ -58,12 +59,13 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 "Plug 'bling/vim-bufferline'
-"
+
 " async lint
 Plug 'w0rp/ale'
 
 " file search
 Plug 'ctrlpvim/ctrlp.vim'
+
 " code search
 Plug 'mileszs/ack.vim'
 "Plug 'wsdjeg/FlyGrep.vim'

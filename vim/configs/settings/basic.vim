@@ -16,7 +16,7 @@ colorscheme Tomorrow-Night
 set viminfo+=n~/.vim/.viminfo
 
 " show last edit position when we reopen file 
-au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif  
+"au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif  
 
 " set ctrl-hjkl to switch splited windows
 map <c-h> <c-w>h
@@ -55,11 +55,6 @@ function! AutoHighlightToggle()
   return 1
  endif
 endfunction
-
-" set python3 first
-if v:version > 800
-    set pyxversion=0
-endif
 
 " set tags search from current directory to root
 set tags=tags;

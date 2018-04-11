@@ -42,7 +42,7 @@ let g:ale_statusline_format = ['✗ %d', '⚠ %d', '✔ OK']
 "显示Linter名称,出错或警告等相关信息
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%] [%code%]'
 "普通模式下，sp前往上一个错误或警告，sn前往下一个错误或警告
 nmap sp <Plug>(ale_previous_wrap)
 nmap sn <Plug>(ale_next_wrap)
@@ -53,7 +53,7 @@ nmap <Leader>e :ALEDetail<CR>
 let g:ale_completion_enabled = 1
 let g:ale_swift_swiftlint_use_defaults = 1
 let g:ale_open_list = 0
-let g:ale_lint_delay = 1000
+let g:ale_lint_delay = 100
 let g:airline#extensions#ale#enabled = 1
 
 " you complete me
