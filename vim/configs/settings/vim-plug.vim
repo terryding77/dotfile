@@ -2,6 +2,7 @@ call plug#begin('~/.vim/plugged')
 
 " On-demand loading
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'Xuyuanp/nerdtree-git-plugin'
 
 Plug 'suan/vim-instant-markdown',
       \ { 'do': 'npm -g install instant-markdown-d' }                 "   Instantly preview markdown
