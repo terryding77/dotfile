@@ -62,6 +62,10 @@ Plug 'w0rp/ale'
 Plug 'ctrlpvim/ctrlp.vim'
 " code search
 Plug 'mileszs/ack.vim'
+"Plug 'wsdjeg/FlyGrep.vim'
 
+" code leader space prettify
+Plug 'Yggdroot/indentLine'
+Plug 'nathanaelkane/vim-indent-guides'
 " Initialize plugin system
 call plug#end()

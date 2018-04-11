@@ -119,3 +119,18 @@ endfunction
 "cnoreabbrev Ack Ack!
 "nnoremap <Leader>a :Ack!<Space>
 nnoremap <Leader>a :call Search("")<left><left>
+
+" Vim
+let g:indentLine_char='┆'
+let g:indentLine_enabled = 1
+let g:indentLine_color_term = 239
+" none X terminal
+let g:indentLine_color_tty_light = 7 " (default: 4)
+let g:indentLine_color_dark = 1 " (default: 2)
+let g:indentLine_bgcolor_term = 111
+let g:indentLine_first_char = '┆'              "设置对齐线的首字符
+let g:indentLine_showFirstIndentLevel = 0   "显示对齐线首字符
+
+let g:indent_guides_enable_on_vim_startup = 1
+ let g:indent_guides_color_change_percent = 10
+ let g:indent_guides_guide_size = 1
