@@ -61,6 +61,8 @@ let g:ale_swift_swiftlint_use_defaults = 1
 let g:ale_open_list = 0
 let g:ale_lint_delay = 100
 let g:airline#extensions#ale#enabled = 1
+let g:ale_linters = {}
+let g:ale_fixers = {}
 
 
 " you complete me

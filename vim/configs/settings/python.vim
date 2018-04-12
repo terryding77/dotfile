@@ -3,8 +3,8 @@ au BufWrite *.py :call Autopep8()
 let g:autopep8_disable_show_diff=1
 
 " ale for python
-let g:ale_linters = {'python': ['flake8']}
-let b:ale_fixers = {'python': ['autopep8']}
+let g:ale_linters['python'] = ['flake8']
+let g:ale_fixers['python'] = ['autopep8']
 au filetype python nmap <leader>f :ALEFix<CR>
 "let g:ale_python_flake8_args = '-m flake8 --max-line-length=120'
 
