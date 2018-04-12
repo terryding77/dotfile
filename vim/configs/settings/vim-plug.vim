@@ -21,10 +21,9 @@ Plug 'roxma/vim-hug-neovim-rpc'
 
 Plug 'zchee/deoplete-go', { 'do': 'make', 'for': 'go' }                                            " golang
 Plug 'zchee/deoplete-jedi'                                                                         " python
-Plug 'thalesmello/webcomplete.vim'                                                                 " web browser
 Plug 'Shougo/neco-vim', {'for': 'vim'}                                                             " Vim
 Plug 'wellle/tmux-complete.vim'                                                                    " tmux panes
-"Plug 'mhartington/deoplete-typescript', { 'do': 'npm install -g typescript', 'for': 'typescript' } " typescript
+Plug 'fszymanski/deoplete-emoji'                                                                   " emoji
 "Plug 'mhartington/nvim-typescript', { 'do': 'npm install -g typescript', 'for': 'typescript' }
 
 function! BuildYCM(info)
@@ -100,8 +99,8 @@ Plug 'hail2u/vim-css3-syntax'
 Plug 'groenewege/vim-less'
 Plug 'pangloss/vim-javascript'
 " typescript
-Plug 'leafgarland/typescript-vim' ", { 'for': 'typescript' }
-Plug 'mxw/vim-jsx' ", { 'for': 'javascript.jsx' }
+Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
+"Plug 'mxw/vim-jsx' ", { 'for': 'javascript.jsx' }
 
 " Initialize plugin system
 call plug#end()

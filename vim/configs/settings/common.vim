@@ -179,6 +179,8 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_yarp = 1
 let g:deoplete#enable_camel_case = 1
 let g:deoplete#enable_refresh_always = 1
+let g:deoplete#omni#input_patterns = {}
+let g:deoplete#omni#input_patterns.javascript = '[^. *\t]\.\w*'
 inoremap <silent><expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
