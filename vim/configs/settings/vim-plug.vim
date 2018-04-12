@@ -103,5 +103,6 @@ Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 "Plug 'mxw/vim-jsx' ", { 'for': 'javascript.jsx' }
 
+Plug 'scrooloose/nerdcommenter'
 " Initialize plugin system
 call plug#end()
