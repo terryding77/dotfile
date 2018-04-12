@@ -63,3 +63,5 @@ set tags=tags;
 " 调整缩进后自动选中，方便再次操作
 vnoremap < <gv
 vnoremap > >gv
+
+nmap <leader>w :w<CR>

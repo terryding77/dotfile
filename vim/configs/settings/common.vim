@@ -6,6 +6,8 @@ let g:airline_detect_modified=1
 "let g:airline_skip_empty_sections = 1
 let g:airline_extensions = ['branch', 'tabline']
 
+"""""""vim-airline""
+let g:airline#extensions#bufferline#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#whitespace#symbol = '!'
@@ -40,12 +42,12 @@ let g:ale_sign_column_always = 1
 let g:ale_set_highlights = 0
 "自定义error和warning图标⚡
 let g:ale_sign_error = '✗'
-let g:ale_sign_warning = '⚠' 
+let g:ale_sign_warning = '' 
 "在vim自带的状态栏中整合ale
-let g:ale_statusline_format = ['✗ %d', '⚠ %d', '✔ OK']
+let g:ale_statusline_format = ['✗ %d', ' %d', '✔ OK']
 "显示Linter名称,出错或警告等相关信息
-let g:ale_echo_msg_error_str = 'E'
-let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_error_str = '✗'
+let g:ale_echo_msg_warning_str = ''
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%] [%code%]'
 "普通模式下，sp前往上一个错误或警告，sn前往下一个错误或警告
 nmap sp <Plug>(ale_previous_wrap)
@@ -230,3 +232,12 @@ au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
+
+""""""incsearch settings""
+"input `/`or`?`or`g/`to search like default vim action 
+"when searching press `tab` move to next result 
+"press `ctrl+j` scroll page down
+map / <Plug>(incsearch-forward)
+map ? <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+""""""end""

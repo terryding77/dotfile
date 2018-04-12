@@ -10,7 +10,7 @@ Plug 'suan/vim-instant-markdown',
       \ { 'do': 'npm -g install instant-markdown-d' }                 "   Instantly preview markdown
 
 " Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
-Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries'}
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries', 'for': 'go' }
 Plug 'elzr/vim-json'
 
 " auto complete plug; deoplete for vim8.0 need `has('python3')` for async " `pip3 install neovim` is required or `pacin python-neovim` in archlinux
@@ -19,10 +19,13 @@ autocmd FileType c,cpp let b:deoplete_disable_auto_complete = 1
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
 
-Plug 'zchee/deoplete-go', { 'do': 'make'}                     " golang
-Plug 'zchee/deoplete-jedi'                                    " python
-Plug 'Shougo/neco-vim', {'for': 'vim'}                        " Vim
-Plug 'wellle/tmux-complete.vim'                               " tmux panes
+Plug 'zchee/deoplete-go', { 'do': 'make', 'for': 'go' }                                            " golang
+Plug 'zchee/deoplete-jedi'                                                                         " python
+Plug 'thalesmello/webcomplete.vim'                                                                 " web browser
+Plug 'Shougo/neco-vim', {'for': 'vim'}                                                             " Vim
+Plug 'wellle/tmux-complete.vim'                                                                    " tmux panes
+"Plug 'mhartington/deoplete-typescript', { 'do': 'npm install -g typescript', 'for': 'typescript' } " typescript
+"Plug 'mhartington/nvim-typescript', { 'do': 'npm install -g typescript', 'for': 'typescript' }
 
 function! BuildYCM(info)
   if a:info.status == 'installed' || a:info.force
@@ -79,6 +82,26 @@ Plug 'nathanaelkane/vim-indent-guides'
 
 "Plugin 'kien/rainbow_parentheses.vim'
 Plug 'kien/rainbow_parentheses.vim'
+
+" insert or delete brackets, parens, quotes in pair
+Plug 'jiangmiao/auto-pairs'
+
+" search highlight & enhance
+Plug 'haya14busa/incsearch.vim'
+Plug 'tpope/vim-surround'
+
+" Diff directories
+Plug 'will133/vim-dirdiff'
+let g:DirDiffExcludes = ".git,node_modules,vendor,dist,.DS_Store,.*.swp"
+
+" html js css
+Plug 'mattn/emmet-vim', { 'for': ['html', 'xml', 'typescript'] }
+Plug 'hail2u/vim-css3-syntax'
+Plug 'groenewege/vim-less'
+Plug 'pangloss/vim-javascript'
+" typescript
+Plug 'leafgarland/typescript-vim' ", { 'for': 'typescript' }
+Plug 'mxw/vim-jsx' ", { 'for': 'javascript.jsx' }
 
 " Initialize plugin system
 call plug#end()

@@ -23,3 +23,8 @@ if v:version > 800
     set pyxversion=0
 endif
 
+au filetype python nmap <leader>r :call CompileRunPython()<CR>
+func! CompileRunPython()
+    exec "w"
+    exec "!time python %"
+endfunc
