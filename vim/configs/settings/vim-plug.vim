@@ -24,6 +24,7 @@ Plug 'zchee/deoplete-jedi'                                                      
 Plug 'Shougo/neco-vim', {'for': 'vim'}                                                             " Vim
 Plug 'wellle/tmux-complete.vim'                                                                    " tmux panes
 Plug 'fszymanski/deoplete-emoji'                                                                   " emoji
+Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }                                   " javaScript
 "Plug 'mhartington/nvim-typescript', { 'do': 'npm install -g typescript', 'for': 'typescript' }
 
 function! BuildYCM(info)
