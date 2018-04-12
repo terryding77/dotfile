@@ -65,3 +65,11 @@ vnoremap < <gv
 vnoremap > >gv
 
 nmap <leader>w :w<CR>
+fu! OpenTerminal()
+    " open split windows on the topleft
+    botright split
+    " resize the height of terminal windows to 30
+    resize 10
+    :call term_start('zsh', {'curwin' : 1, 'term_finish' : 'close'})
+endf
+nmap <leader>t :call OpenTerminal()<CR>
