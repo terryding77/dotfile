@@ -1,6 +1,7 @@
 " tagbar with golang settings
 " ensure ctags exist.(`pacin ctags` for archlinux)
 " go get -u github.com/jstemmer/gotags
+let g:tagbar_sort = 0
 let g:tagbar_type_go = {
 	\ 'ctagstype' : 'go',
 	\ 'kinds'     : [

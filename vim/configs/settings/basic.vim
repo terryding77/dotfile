@@ -6,6 +6,7 @@ set shiftwidth=4
 set expandtab
 set backspace=indent,eol,start
 set mouse=a
+set cursorline
 
 syntax enable
 set t_Co=256
@@ -58,3 +59,7 @@ endfunction
 
 " set tags search from current directory to root
 set tags=tags;
+
+" 调整缩进后自动选中，方便再次操作
+vnoremap < <gv
+vnoremap > >gv

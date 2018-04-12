@@ -29,6 +29,10 @@ nmap <leader>- <Plug>AirlineSelectPrevTab
 nmap <leader>+ <Plug>AirlineSelectNextTab
 nmap <leader>= <Plug>AirlineSelectNextTab
 
+nmap <m-1> <Plug>AirlineSelectTab1
+nmap <m-2> <Plug>AirlineSelectTab2
+nmap <m-3> <Plug>AirlineSelectTab3
+
 " ale lint
 "ale
 "始终开启标志列
@@ -49,12 +53,13 @@ nmap sn <Plug>(ale_next_wrap)
 "<Leader>s触发/关闭语法检查
 "nmap <Leader>s :ALEToggle<CR>
 "<Leader>d查看错误或警告的详细信息
-nmap <Leader>e :ALEDetail<CR>
+nmap <leader>e :ALEDetail<CR>
 let g:ale_completion_enabled = 1
 let g:ale_swift_swiftlint_use_defaults = 1
 let g:ale_open_list = 0
 let g:ale_lint_delay = 100
 let g:airline#extensions#ale#enabled = 1
+
 
 " you complete me
 " #####YouCompleteMe Configure   
@@ -98,7 +103,7 @@ let g:clang_user_options='|| exit 0'
 " ctrlp 
 let g:ctrlp_map = '<leader>p'
 let g:ctrlp_cmd = 'CtrlP'
-map <leader>f :CtrlPMRU<CR>
+"map <leader>f :CtrlPMRU<CR>
 let g:ctrlp_custom_ignore = {
     \ 'dir':  '\v[\/]\.(git|hg|svn|rvm)$',
     \ 'file': '\v\.(exe|so|dll|zip|tar|tar.gz|pyc)$',
@@ -109,6 +114,7 @@ let g:ctrlp_max_height=15
 let g:ctrlp_match_window_reversed=0
 let g:ctrlp_mruf_max=500
 let g:ctrlp_follow_symlinks=1
+let g:ctrlp_working_path_mode = 'ra'
 
 " ack.vim
 " `pacin the_silver_searcher`
