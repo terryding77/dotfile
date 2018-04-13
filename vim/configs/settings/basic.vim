@@ -73,3 +73,11 @@ fu! OpenTerminal()
     :call term_start('zsh', {'curwin' : 1, 'term_finish' : 'close'})
 endf
 nmap <leader>t :call OpenTerminal()<CR>
+
+"Keep search pattern at the center of the screen."
+nnoremap <silent> n nzz
+nnoremap <silent> N Nzz
+nnoremap <silent> * *zz
+nnoremap <silent> # #zz
+nnoremap <silent> g* g*zz
+
