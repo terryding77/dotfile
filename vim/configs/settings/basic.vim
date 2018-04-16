@@ -81,3 +81,12 @@ nnoremap <silent> * *zz
 nnoremap <silent> # #zz
 nnoremap <silent> g* g*zz
 
+
+" Source the vimrc file after saving it
+augroup ReloadVimrc
+  autocmd!
+  autocmd bufwritepost *vim source $MYVIMRC |
+        \ AirlineRefresh |
+        \ redraw |
+        \ echo '~/.vimrc reloaded!'
+augroup END

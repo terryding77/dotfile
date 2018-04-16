@@ -21,3 +21,5 @@ alias sudo='sudo '
 #This means that one may alias ls to "ls -F", for instance, and Bash does not try to recursively expand the replacement text. 
 #If the last character of the alias value is a space or tab character, 
 #then the next command word following the alias is also checked for alias expansion.
+alias zshrc="$EDITOR ~/.zsh_custom ~/.zshrc $ZSH_CUSTOM/*.zsh"
+alias vimrc="$EDITOR ~/.vim/settings/* ~/.vim/vimrc"

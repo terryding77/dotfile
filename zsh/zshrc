@@ -61,6 +61,7 @@ plugins=(
 source ${ZSH_CUSTOM}/os-detective.zsh
 
 # load oh my zsh file
+# other custom zsh config files(alias, env, theme) can be loaded by this file
 source $ZSH/oh-my-zsh.sh
 
 # load config depending on computer which would not sync between computers by git
