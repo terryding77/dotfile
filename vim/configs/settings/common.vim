@@ -87,7 +87,7 @@ if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
 
-function Search(string) abort
+function! Search(string) abort
   let saved_shellpipe = &shellpipe
   let &shellpipe = '>'
   try
