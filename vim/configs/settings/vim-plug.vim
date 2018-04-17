@@ -104,5 +104,8 @@ Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 "Plug 'mxw/vim-jsx' ", { 'for': 'javascript.jsx' }
 
 Plug 'scrooloose/nerdcommenter'
+
+" tmux navigator with vim
+Plug 'christoomey/vim-tmux-navigator'
 " Initialize plugin system
 call plug#end()
