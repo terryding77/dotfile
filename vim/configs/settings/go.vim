@@ -31,7 +31,7 @@ let g:tagbar_type_go = {
 \ }
 
 " ale for go
-let g:ale_linters['go'] = ['golint', 'go vet', 'go build']
+let g:ale_linters['go'] = ['gofmt', 'golint', 'go vet', 'go build']
 
 " vim-go custom mappings
 "au filetype go nmap <leader>s :w<CR><plug>(go-implements)
@@ -40,7 +40,7 @@ let g:ale_linters['go'] = ['golint', 'go vet', 'go build']
 "au filetype go nmap <leader>gv <plug>(go-doc-vertical)
 au filetype go nmap <leader>r :w<CR><plug>(go-imports)<plug>(go-run)
 au filetype go nmap <leader>b :w<CR><plug>(go-imports)<plug>(go-build)
-au filetype go nmap <leader>t :w<CR><plug>(go-test)
+"au filetype go nmap <leader>t :w<CR><plug>(go-test)
 au filetype go nmap <leader>c <plug>(go-coverage)
 "au filetype go nmap <leader>ds <plug>(go-def-split)
 "au filetype go nmap <leader>dv <plug>(go-def-vertical)

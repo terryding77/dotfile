@@ -1,0 +1,45 @@
+# fmt.Println(XXX)
+snippet pl "fmt.Println" b
+fmt.Println(${1:ObjectToPrint})
+endsnippet
+
+# if err != nil {
+#	  XXX
+# }
+snippet iferr "judge error" b
+if err != nil {
+	${1:return err}
+}
+endsnippet
+
+# if _, err = funcName(); err != nil {
+#	  XXX
+# }
+snippet ifverr "judge error" b
+if ${1:_, }err ${2::}= ${3:funcName()}; err != nil {
+	${4:return err}
+}
+endsnippet
+
+
+#######################################################################
+#                            beego snippet                            #
+#######################################################################
+
+# get controller generate
+snippet /^controllerGet/ "Get API for beego"
+// @Title ${1}
+// @Description $1
+// @Param
+// @Success
+// @router
+func (this *) funcName() {
+	params := &viewModel.
+
+}
+endsnippet
+
+# post controller generate
+snippet /^controllerPost/ "Post API for beego"
+endsnippet
+

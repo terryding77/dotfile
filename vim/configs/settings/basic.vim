@@ -8,10 +8,15 @@ set backspace=indent,eol,start
 set mouse=a
 set cursorline
 
+set guifont=sauce\ code\ pro\ nf\ bold\ 12
+
 syntax enable
 set t_Co=256
 set background=dark
 colorscheme Tomorrow-Night
+
+set wildmode=list,longest
+set wildmenu
 
 " set viminfo location 
 set viminfo+=n~/.vim/.viminfo

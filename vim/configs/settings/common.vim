@@ -132,7 +132,7 @@ let g:gitgutter_sign_modified_removed = 'MD'
 " close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-nmap <F2> :NERDTreeToggle<CR>
+nmap <F3> :NERDTreeToggle<CR>
 nmap <F8> :TagbarToggle<CR>
 
 " Use deoplete.

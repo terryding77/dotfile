@@ -14,7 +14,7 @@ Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries', 'for': 'go' }
 Plug 'elzr/vim-json'
 
 " auto complete plug; deoplete for vim8.0 need `has('python3')` for async " `pip3 install neovim` is required or `pacin python-neovim` in archlinux
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Autocomplete engine
+Plug 'Shougo/deoplete.nvim'  " Autocomplete engine
 autocmd FileType c,cpp let b:deoplete_disable_auto_complete = 1
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
@@ -27,13 +27,15 @@ Plug 'fszymanski/deoplete-emoji'                                                
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }                                   " javaScript
 "Plug 'mhartington/nvim-typescript', { 'do': 'npm install -g typescript', 'for': 'typescript' }
 
+" cxx plugs
 function! BuildYCM(info)
   if a:info.status == 'installed' || a:info.force
     !./install.py --clang-completer --go-completer --system-libclang
   endif
 endfunction
 Plug 'Valloric/YouCompleteMe', { 'for': ['c', 'cpp'], 'do': function('BuildYCM') }
-
+Plug 'jeaye/color_coded', { 'for': ['c', 'cpp'], 'do': 'rm -rf CMakeCache.txt && mkdir build && cd build && cmake .. -DDOWNLOAD_CLANG=0 && make && make install && make clean' }
+Plug 'rdnetto/YCM-Generator', { 'for': ['c', 'cpp'], 'branch': 'stable'}
 
 " Snippets are separated from the engine. Add this if you want them:
 Plug 'SirVer/ultisnips'
@@ -103,6 +105,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 "Plug 'mxw/vim-jsx' ", { 'for': 'javascript.jsx' }
 
+" comment
 Plug 'scrooloose/nerdcommenter'
 
 " tmux navigator with vim
