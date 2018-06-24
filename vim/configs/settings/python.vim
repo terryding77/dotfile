@@ -18,11 +18,6 @@ let g:jedi#completions_command = "<C-Space>"
 let g:jedi#rename_command = "<leader>s"
 let g:jedi#completions_enabled = 0
 
-" set python3 first
-if v:version > 800
-    set pyxversion=0
-endif
-
 au filetype python nmap <leader>r :call CompileRunPython()<CR>
 func! CompileRunPython()
     exec "w"

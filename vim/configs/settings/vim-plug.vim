@@ -1,126 +1,116 @@
 call plug#begin('~/.vim/plugged')
-
-" On-demand loading
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-"Plug 'ryanoasis/vim-devicons'
-
-Plug 'suan/vim-instant-markdown',
-      \ { 'do': 'npm -g install instant-markdown-d' }                 "   Instantly preview markdown
-
-" Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
-Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries', 'for': 'go' }
-Plug 'elzr/vim-json'
-
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                              Word Completion                               "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" set python3 first
+if v:version > 800
+    set pyxversion=0
+endif
+set pyxversion=3
 " auto complete plug; deoplete for vim8.0 need `has('python3')` for async " `pip3 install neovim` is required or `pacin python-neovim` in archlinux
 Plug 'Shougo/deoplete.nvim'  " Autocomplete engine
 autocmd FileType c,cpp let b:deoplete_disable_auto_complete = 1
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
-
-Plug 'zchee/deoplete-go', { 'do': 'make', 'for': 'go' }                                            " golang
-Plug 'zchee/deoplete-jedi'                                                                         " python
-Plug 'Shougo/neco-vim', {'for': 'vim'}                                                             " Vim
-Plug 'wellle/tmux-complete.vim'                                                                    " tmux panes
-Plug 'fszymanski/deoplete-emoji'                                                                   " emoji
-Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }                                   " javaScript
-"Plug 'mhartington/nvim-typescript', { 'do': 'npm install -g typescript', 'for': 'typescript' }
+Plug 'Shougo/neco-vim', {'for': 'vim'}
+Plug 'wellle/tmux-complete.vim'
+Plug 'fszymanski/deoplete-emoji'
 Plug 'ujihisa/neco-look'
-
-" cxx plugs
-function! BuildYCM(info)
-  if a:info.status == 'installed' || a:info.force
-    !./install.py --clang-completer --go-completer --system-libclang
-  endif
-endfunction
-Plug 'Valloric/YouCompleteMe', { 'for': ['c', 'cpp'], 'do': function('BuildYCM') }
-Plug 'jeaye/color_coded', { 'for': ['c', 'cpp'], 'do': 'rm -rf CMakeCache.txt && mkdir build && cd build && cmake .. -DDOWNLOAD_CLANG=0 && make && make install && make clean' }
-Plug 'rdnetto/YCM-Generator', { 'for': ['c', 'cpp'], 'branch': 'stable'}
-
 " Snippets are separated from the engine. Add this if you want them:
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-
-" python
-"Plug 'python-mode/python-mode', { 'branch': 'develop' }
-Plug 'davidhalter/jedi-vim'
-Plug 'tell-k/vim-autopep8'
-
-" Tagbar: a class outline viewer for Vim
-Plug 'majutsushi/tagbar'
-
-" zoom a pane by 'ctrl-w o'
-Plug 'vim-scripts/ZoomWin'
-
-" mini buffer expl
-"Plug 'fholgado/minibufexpl.vim'
-
-" unload file buffer without destory window layout
-Plug 'qpkorr/vim-bufkill'
-
-" vim airline
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-fugitive'
-"Plug 'bling/vim-bufferline'
-
-" async lint
-Plug 'w0rp/ale'
-
-" file search
-"Plug 'ctrlpvim/ctrlp.vim'
-Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
-
-" code search
-Plug 'mileszs/ack.vim'
-"Plug 'wsdjeg/FlyGrep.vim'
-
-" start page 
-Plug 'mhinz/vim-startify'
-
-" code leader space prettify
-Plug 'Yggdroot/indentLine'
-" Plug 'nathanaelkane/vim-indent-guides'
-
-"Plugin 'kien/rainbow_parentheses.vim'
-Plug 'kien/rainbow_parentheses.vim'
-
-" insert or delete brackets, parens, quotes in pair
-" Plug 'jiangmiao/auto-pairs'
-
-" search highlight & enhance
-Plug 'haya14busa/incsearch.vim'
-Plug 'tpope/vim-surround'
-
-" Diff directories
-Plug 'will133/vim-dirdiff'
-let g:DirDiffExcludes = ".git,node_modules,vendor,dist,.DS_Store,.*.swp"
-
-" html js css
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                               Golang Plugins                               "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries', 'for': 'go' }
+Plug 'zchee/deoplete-go', { 'do': 'make', 'for': 'go' }
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                               Python Plugins                               "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plug 'zchee/deoplete-jedi', {'for': 'python' }
+Plug 'davidhalter/jedi-vim', {'for': 'python' }
+Plug 'tell-k/vim-autopep8', {'for': 'python' }
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                            JS/HTML/CSS Plugins                             "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'mattn/emmet-vim', { 'for': ['html', 'xml', 'typescript'] }
-Plug 'hail2u/vim-css3-syntax'
-Plug 'groenewege/vim-less'
-Plug 'pangloss/vim-javascript'
+Plug 'hail2u/vim-css3-syntax', { 'for': ['html', 'css', 'typescript'] }
+Plug 'groenewege/vim-less', { 'for': ['html', 'css', 'typescript'] }
+"Plug 'pangloss/vim-javascript'
 Plug 'ap/vim-css-color', { 'for': 'css' }
 " typescript
 Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 "Plug 'mxw/vim-jsx' ", { 'for': 'javascript.jsx' }
-
-" comment
-"Plug 'scrooloose/nerdcommenter'
-Plug 'tpope/vim-commentary'
-
+Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern', 'for': 'js' }
+"Plug 'mhartington/nvim-typescript', { 'do': 'npm install -g typescript', 'for': 'typescript' }
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                               Theme Plugins                                "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim airline
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'morhetz/gruvbox'
+Plug 'jacoborus/tender.vim'
+Plug 'rakr/vim-one'
+Plug 'drewtempelmeyer/palenight.vim'
+Plug 'crusoexia/vim-monokai'
+Plug 'chriskempson/base16-vim'
+Plug 'tyrannicaltoucan/vim-quantum'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'nanotech/jellybeans.vim'
+Plug 'KeitaNakamura/neodark.vim'
+Plug 'joshdick/onedark.vim'
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                            CSV Relevant Plugins                            "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                        File Search Relevant Plugins                        "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" file search
+Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+" code search
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+" Plug 'mileszs/ack.vim'
+" search highlight & enhance
+Plug 'haya14busa/incsearch.vim'
+" On-demand loading
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+"Plug 'ryanoasis/vim-devicons'
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                             Code Lint Plugins                              "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" async lint
+Plug 'w0rp/ale'
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                            Other Common Plugins                            "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Tagbar: a class outline viewer for Vim
+Plug 'majutsushi/tagbar'
+" start page
+Plug 'mhinz/vim-startify'
+" code leader space prettify
+Plug 'Yggdroot/indentLine'
+Plug 'kien/rainbow_parentheses.vim'
+Plug 'tpope/vim-surround'
+" Diff directories
+Plug 'will133/vim-dirdiff'
+let g:DirDiffExcludes = ".git,node_modules,vendor,dist,.DS_Store,.*.swp"
 " tmux navigator with vim
 Plug 'christoomey/vim-tmux-navigator'
-
+Plug 'suan/vim-instant-markdown',
+      \ { 'do': 'npm -g install instant-markdown-d', 'for': 'md' }                 "   Instantly preview markdown
+" Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
+Plug 'elzr/vim-json'
+" unload file buffer without destory window layout
+Plug 'qpkorr/vim-bufkill'
+" comment
+Plug 'tpope/vim-commentary'
 Plug 'cespare/vim-toml'
-
 Plug 'editorconfig/editorconfig-vim'
-
-
-"Plug 'ludovicchabant/vim-gutentags'
-"Plug 'skywind3000/gutentags_plus'
 " Initialize plugin system
 call plug#end()

@@ -10,11 +10,15 @@ set cursorline
 
 set guifont=sauce\ code\ pro\ nf\ bold\ 12
 
-syntax enable
+" If you have vim >=8.0 or Neovim >= 0.1.5
+if (has("termguicolors"))
+ set termguicolors
+endif
 set t_Co=256
 set background=dark
-colorscheme Tomorrow-Night
-
+syntax on
+let g:quantum_black=1
+colorscheme quantum
 
 set wildmode=list,longest
 set wildmenu
@@ -33,6 +37,8 @@ map <c-l> <c-w>l
 
 " set transparent
 hi Normal ctermbg=NONE
+hi NonText ctermbg=none
+hi LineNr ctermbg=none
 
 " set mapleader
 let mapleader = " "
