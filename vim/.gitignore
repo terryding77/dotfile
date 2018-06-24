@@ -3,3 +3,4 @@
 /configs/plugged
 .ropeproject/
 /configs/swap/
+/configs/autoload/plug.vim.old

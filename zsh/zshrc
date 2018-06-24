@@ -40,13 +40,13 @@ COMPLETION_WAITING_DOTS="true"
 HIST_STAMPS="yyyy-mm-dd"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-plugins=(   
+plugins=(
     autojump
     command-not-found
     common-aliases
     colored-man-pages
     extract
-    git 
+    git
     golang
     sudo
     tmux
@@ -56,7 +56,7 @@ plugins=(
     zsh_reload
 )
 
-# load plugins depending on system 
+# load plugins depending on system
 # this file should load before oh-my-zsh for loading system specific zsh plugins
 source ${ZSH_CUSTOM}/os-detective.zsh
 
