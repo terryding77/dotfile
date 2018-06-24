@@ -15,6 +15,7 @@ set t_Co=256
 set background=dark
 colorscheme Tomorrow-Night
 
+
 set wildmode=list,longest
 set wildmenu
 
@@ -95,3 +96,7 @@ augroup ReloadVimrc
         \ redraw |
         \ echo '~/.vimrc reloaded!'
 augroup END
+
+" let tmux do not only show vim in title bar.
+" https://stackoverflow.com/questions/15123477/tmux-tabs-with-name-of-file-open-in-vim
+autocmd BufReadPost,FileReadPost,BufNewFile * call system("tmux rename-window " . expand("%:t"))

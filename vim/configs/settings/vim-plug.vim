@@ -26,6 +26,7 @@ Plug 'wellle/tmux-complete.vim'                                                 
 Plug 'fszymanski/deoplete-emoji'                                                                   " emoji
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }                                   " javaScript
 "Plug 'mhartington/nvim-typescript', { 'do': 'npm install -g typescript', 'for': 'typescript' }
+Plug 'ujihisa/neco-look'
 
 " cxx plugs
 function! BuildYCM(info)
@@ -69,7 +70,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'w0rp/ale'
 
 " file search
-Plug 'ctrlpvim/ctrlp.vim'
+"Plug 'ctrlpvim/ctrlp.vim'
+Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 
 " code search
 Plug 'mileszs/ack.vim'
@@ -80,13 +82,13 @@ Plug 'mhinz/vim-startify'
 
 " code leader space prettify
 Plug 'Yggdroot/indentLine'
-Plug 'nathanaelkane/vim-indent-guides'
+" Plug 'nathanaelkane/vim-indent-guides'
 
 "Plugin 'kien/rainbow_parentheses.vim'
 Plug 'kien/rainbow_parentheses.vim'
 
 " insert or delete brackets, parens, quotes in pair
-Plug 'jiangmiao/auto-pairs'
+" Plug 'jiangmiao/auto-pairs'
 
 " search highlight & enhance
 Plug 'haya14busa/incsearch.vim'
@@ -101,14 +103,24 @@ Plug 'mattn/emmet-vim', { 'for': ['html', 'xml', 'typescript'] }
 Plug 'hail2u/vim-css3-syntax'
 Plug 'groenewege/vim-less'
 Plug 'pangloss/vim-javascript'
+Plug 'ap/vim-css-color', { 'for': 'css' }
 " typescript
 Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 "Plug 'mxw/vim-jsx' ", { 'for': 'javascript.jsx' }
 
 " comment
-Plug 'scrooloose/nerdcommenter'
+"Plug 'scrooloose/nerdcommenter'
+Plug 'tpope/vim-commentary'
 
 " tmux navigator with vim
 Plug 'christoomey/vim-tmux-navigator'
+
+Plug 'cespare/vim-toml'
+
+Plug 'editorconfig/editorconfig-vim'
+
+
+"Plug 'ludovicchabant/vim-gutentags'
+"Plug 'skywind3000/gutentags_plus'
 " Initialize plugin system
 call plug#end()

@@ -31,7 +31,7 @@ let g:tagbar_type_go = {
 \ }
 
 " ale for go
-let g:ale_linters['go'] = ['gofmt', 'golint', 'go vet', 'go build']
+let g:ale_linters['go'] = ['gofmt', 'golint', 'go build'] " , 'go vet'
 
 " vim-go custom mappings
 "au filetype go nmap <leader>s :w<CR><plug>(go-implements)

@@ -65,21 +65,12 @@ let g:ale_linters = {}
 let g:ale_fixers = {}
 
 
-" ctrlp 
-let g:ctrlp_map = '<leader>p'
-let g:ctrlp_cmd = 'CtrlP'
-"map <leader>f :CtrlPMRU<CR>
-let g:ctrlp_custom_ignore = {
-    \ 'dir':  '\v[\/]\.(git|hg|svn|rvm)$',
-    \ 'file': '\v\.(exe|so|dll|zip|tar|tar.gz|pyc)$',
-    \ }
-let g:ctrlp_working_path_mode=0
-let g:ctrlp_match_window_bottom=1
-let g:ctrlp_max_height=15
-let g:ctrlp_match_window_reversed=0
-let g:ctrlp_mruf_max=500
-let g:ctrlp_follow_symlinks=1
-let g:ctrlp_working_path_mode = 'ra'
+" leaderF
+let g:Lf_ShortcutF = '<leader>p'
+let g:Lf_RootMarks = ['.git', '.hg', '.svn']
+let g:Lf_WorkingDirectoryMode = 'Ac'
+let g:Lf_HideHelp = 1
+let g:Lf_DefaultMode = 'FullPath'
 
 " ack.vim
 " `pacin the_silver_searcher`
@@ -111,10 +102,6 @@ let g:indentLine_color_dark = 1 " (default: 2)
 let g:indentLine_bgcolor_term = 111
 let g:indentLine_first_char = '┆'              "设置对齐线的首字符
 let g:indentLine_showFirstIndentLevel = 0   "显示对齐线首字符
-
-let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_color_change_percent = 10
-let g:indent_guides_guide_size = 1
 
 " Bufkill
 nmap <leader>x :BD<CR>
@@ -220,3 +207,15 @@ nnoremap <silent> <leader>ge :Gedit<CR>
 " Mnemonic _i_nteractive
 nnoremap <silent> <leader>ga :Git add -p %<CR>
 nnoremap <silent> <leader>gg :SignifyToggle<CR>
+"
+"" enable gtags module
+"let g:gutentags_modules = ['ctags', 'gtags_cscope']
+"
+"" config project root markers.
+"let g:gutentags_project_root = ['.root']
+"
+"" generate datebases in my cache directory, prevent gtags files polluting my project
+"let g:gutentags_cache_dir = expand('~/.cache/tags')
+"
+"" forbid gutentags adding gtags databases
+"let g:gutentags_auto_add_gtags_cscope = 0
