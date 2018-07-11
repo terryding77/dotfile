@@ -73,14 +73,13 @@ Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 " code search
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-" Plug 'mileszs/ack.vim'
 " search highlight & enhance
 Plug 'haya14busa/incsearch.vim'
 " On-demand loading
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-"Plug 'ryanoasis/vim-devicons'
+Plug 'ryanoasis/vim-devicons'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                             Code Lint Plugins                              "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -102,9 +101,12 @@ Plug 'will133/vim-dirdiff'
 let g:DirDiffExcludes = ".git,node_modules,vendor,dist,.DS_Store,.*.swp"
 " tmux navigator with vim
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'suan/vim-instant-markdown',
-      \ { 'do': 'npm -g install instant-markdown-d', 'for': 'md' }                 "   Instantly preview markdown
-" Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
+" markdown
+Plug 'godlygeek/tabular' , {'for': 'markdown'}
+Plug 'plasticboy/vim-markdown' , {'for': 'markdown'}
+Plug 'iamcco/mathjax-support-for-mkdp' , {'for': 'markdown'}
+Plug 'iamcco/markdown-preview.vim' , {'for': 'markdown'}
+" json
 Plug 'elzr/vim-json'
 " unload file buffer without destory window layout
 Plug 'qpkorr/vim-bufkill'

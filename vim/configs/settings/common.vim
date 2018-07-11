@@ -1,3 +1,6 @@
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                              airline settings                              "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " airline theme
 let g:airline_theme="bubblegum"
@@ -37,6 +40,10 @@ nmap <m-1> <Plug>AirlineSelectTab1
 nmap <m-2> <Plug>AirlineSelectTab2
 nmap <m-3> <Plug>AirlineSelectTab3
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                                ale settings                                "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " ale lint
 "ale
 "始终开启标志列
@@ -67,12 +74,20 @@ let g:ale_linters = {}
 let g:ale_fixers = {}
 
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                              leaderF settings                              "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " leaderF
 let g:Lf_ShortcutF = '<leader>p'
 let g:Lf_RootMarks = ['.git', '.hg', '.svn']
 let g:Lf_WorkingDirectoryMode = 'Ac'
 let g:Lf_HideHelp = 1
 let g:Lf_DefaultMode = 'FullPath'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                             fzf.vim settings                               "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " This is the default extra key bindings
 let g:fzf_action = {
@@ -138,6 +153,8 @@ command! -bang -nargs=* Ag
   \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
   \                 <bang>0)
 
+nnoremap <silent> <Leader>a :Ag<CR>
+
 " Similarly, we can apply it to fzf#vim#grep. To use ripgrep instead of ag:
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
@@ -163,25 +180,9 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
 " Advanced customization using autoload functions
 inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
 
-" ack.vim
-" `pacin the_silver_searcher`
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
-endif
-
-function! Search(string) abort
-  let saved_shellpipe = &shellpipe
-  let &shellpipe = '>'
-  try
-    execute 'Ack!' shellescape(a:string, 1)
-  finally
-    let &shellpipe = saved_shellpipe
-  endtry
-endfunction
-
-"cnoreabbrev Ack Ack!
-"nnoremap <Leader>a :Ack!<Space>
-nnoremap <Leader>a :call Search("")<left><left>
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                            indentLine settings                             "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Vim
 let g:indentLine_char='┆'
@@ -194,8 +195,16 @@ let g:indentLine_bgcolor_term = 111
 let g:indentLine_first_char = '┆'              "设置对齐线的首字符
 let g:indentLine_showFirstIndentLevel = 0   "显示对齐线首字符
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                              Bufkill settings                              "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " Bufkill
 nmap <leader>x :BD<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                             gitgutter settings                             "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " gitgutter keymap
 nmap <leader>+ <Plug>GitGutterNextHunk
@@ -206,6 +215,10 @@ let g:gitgutter_sign_modified = 'M'
 let g:gitgutter_sign_removed = 'D'
 let g:gitgutter_sign_removed_first_line = 'DF'
 let g:gitgutter_sign_modified_removed = 'MD'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                             nerdtree settings                              "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
@@ -250,6 +263,9 @@ let g:NERDTreeIndicatorMapCustom = {
 "let g:NERDTreeHighlightFoldersFullName = 1 " highlights the folder name
 
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                        rainbow_parentheses settings                        "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "Plugin 'kien/rainbow_parentheses.vim'
 let g:rbpt_colorpairs = [
@@ -276,14 +292,9 @@ au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
-""""""incsearch settings""
-"input `/`or`?`or`g/`to search like default vim action 
-"when searching press `tab` move to next result 
-"press `ctrl+j` scroll page down
-map / <Plug>(incsearch-forward)
-map ? <Plug>(incsearch-backward)
-map g/ <Plug>(incsearch-stay)
-""""""end""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                             fugitive settings                              "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " fugitive
 nnoremap <silent> <leader>gst :Gstatus<CR>
@@ -298,15 +309,22 @@ nnoremap <silent> <leader>ge :Gedit<CR>
 " Mnemonic _i_nteractive
 nnoremap <silent> <leader>ga :Git add -p %<CR>
 nnoremap <silent> <leader>gg :SignifyToggle<CR>
-"
-"" enable gtags module
-"let g:gutentags_modules = ['ctags', 'gtags_cscope']
-"
-"" config project root markers.
-"let g:gutentags_project_root = ['.root']
-"
-"" generate datebases in my cache directory, prevent gtags files polluting my project
-"let g:gutentags_cache_dir = expand('~/.cache/tags')
-"
-"" forbid gutentags adding gtags databases
-"let g:gutentags_auto_add_gtags_cscope = 0
+
+" MarkdownPreview
+au filetype markdown nmap <silent> <leader>r <Plug>MarkdownPreview        " for normal mode
+au filetype markdown nmap <silent> <leader>s <Plug>StopMarkdownPreview    " for normal mode
+let g:mkdp_path_to_chrome = ""
+" 设置 chrome 浏览器的路径（或是启动 chrome 的命令）
+" 如果设置了该参数, g:mkdp_browserfunc 将被忽略
+let g:mkdp_browserfunc = 'MKDP_browserfunc_default'
+" vim 回调函数, 参数为要打开的 url
+let g:mkdp_auto_start = 1
+" 设置为 1 可以在打开 markdown 文件的时候自动打开浏览器预览，只在打开 markdown 文件的时候打开一次
+let g:mkdp_auto_open = 1
+" 设置为 1 在编辑 markdown 的时候检查预览窗口是否已经打开，否则自动打开预览窗口
+let g:mkdp_auto_close = 1
+" 在切换 buffer 的时候自动关闭预览窗口，设置为 0 则在切换 buffer 的时候不自动关闭预览窗口
+let g:mkdp_refresh_slow = 0
+" 设置为 1 则只有在保存文件，或退出插入模式的时候更新预览，默认为 0，实时更新预览
+let g:mkdp_command_for_global = 0
+" 设置为 1 则所有文件都可以使用 MarkdownPreview 进行预览，默认只有 markdown 文件可以使用改命令

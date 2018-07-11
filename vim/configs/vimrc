@@ -1,7 +1,7 @@
 source ~/.vim/settings/vim-plug.vim
 source ~/.vim/settings/basic.vim
 source ~/.vim/settings/common.vim
-source ~/.vim/settings/cxx.vim
-source ~/.vim/settings/go.vim
-source ~/.vim/settings/python.vim
-source ~/.vim/settings/jsx.vim
+source ~/.vim/settings/lang-cxx.vim
+source ~/.vim/settings/lang-go.vim
+source ~/.vim/settings/lang-python.vim
+source ~/.vim/settings/lang-jsx.vim

@@ -106,3 +106,12 @@ augroup END
 " let tmux do not only show vim in title bar.
 " https://stackoverflow.com/questions/15123477/tmux-tabs-with-name-of-file-open-in-vim
 autocmd BufReadPost,FileReadPost,BufNewFile * call system("tmux rename-window " . expand("%:t"))
+""""""incsearch settings""
+"input `/`or`?`or`g/`to search like default vim action 
+"when searching press `tab` move to next result 
+"press `ctrl+j` scroll page down
+map / <Plug>(incsearch-forward)
+map ? <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+""""""end""
+
