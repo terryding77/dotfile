@@ -23,5 +23,6 @@ alias sudo='sudo '
 #then the next command word following the alias is also checked for alias expansion.
 alias zshrc="$EDITOR ~/.zsh_custom ~/.zshrc $ZSH_CUSTOM/*.zsh"
 alias vimrc="$EDITOR ~/.vim/settings/* ~/.vim/vimrc"
+alias tmuxrc="$EDITOR ~/.tmux.conf"
 
 bindkey '^n' autosuggest-accept

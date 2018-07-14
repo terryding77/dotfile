@@ -50,6 +50,7 @@ plugins=(
     golang
     sudo
     tmux
+    yarn
     zsh-autosuggestions
     zsh-syntax-highlighting
     zsh-nvm

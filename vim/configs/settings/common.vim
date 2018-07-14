@@ -328,3 +328,4 @@ let g:mkdp_refresh_slow = 0
 " 设置为 1 则只有在保存文件，或退出插入模式的时候更新预览，默认为 0，实时更新预览
 let g:mkdp_command_for_global = 0
 " 设置为 1 则所有文件都可以使用 MarkdownPreview 进行预览，默认只有 markdown 文件可以使用改命令
+let g:vim_markdown_folding_disabled=1
