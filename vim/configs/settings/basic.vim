@@ -115,3 +115,4 @@ map ? <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
 """"""end""
 
+map <leader>sudo :w !sudo tee %<CR>
