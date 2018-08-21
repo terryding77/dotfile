@@ -49,17 +49,17 @@ Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern', 'for': 'js' }
 " vim airline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'morhetz/gruvbox'
-Plug 'jacoborus/tender.vim'
-Plug 'rakr/vim-one'
-Plug 'drewtempelmeyer/palenight.vim'
-Plug 'crusoexia/vim-monokai'
-Plug 'chriskempson/base16-vim'
+" Plug 'morhetz/gruvbox'
+" Plug 'jacoborus/tender.vim'
+" Plug 'rakr/vim-one'
+" Plug 'drewtempelmeyer/palenight.vim'
+" Plug 'crusoexia/vim-monokai'
+" Plug 'chriskempson/base16-vim'
 Plug 'tyrannicaltoucan/vim-quantum'
-Plug 'NLKNguyen/papercolor-theme'
-Plug 'nanotech/jellybeans.vim'
-Plug 'KeitaNakamura/neodark.vim'
-Plug 'joshdick/onedark.vim'
+" Plug 'NLKNguyen/papercolor-theme'
+" Plug 'nanotech/jellybeans.vim'
+" Plug 'KeitaNakamura/neodark.vim'
+" Plug 'joshdick/onedark.vim'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                            CSV Relevant Plugins                            "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -114,5 +114,7 @@ Plug 'qpkorr/vim-bufkill'
 Plug 'tpope/vim-commentary'
 Plug 'cespare/vim-toml'
 Plug 'editorconfig/editorconfig-vim'
+" calculate startup's time
+Plug 'tweekmonster/startuptime.vim'
 " Initialize plugin system
 call plug#end()
