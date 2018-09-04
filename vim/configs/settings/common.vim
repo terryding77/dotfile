@@ -329,3 +329,19 @@ let g:mkdp_refresh_slow = 0
 let g:mkdp_command_for_global = 0
 " 设置为 1 则所有文件都可以使用 MarkdownPreview 进行预览，默认只有 markdown 文件可以使用改命令
 let g:vim_markdown_folding_disabled=1
+
+" vim-gh-line
+" To disable default key mapping:
+" let g:gh_line_map_default = 0
+" Use your own mapping:
+" let g:gh_line_map = '<leader>gh'
+" Use a custom program to open link:
+let g:gh_open_command = 'chromium '
+" Use canonical version hash for url in place of branch name:
+let g:gh_use_canonical = 0
+" Use self deployed gitlab:
+let g:gh_gitlab_domain = "git.hyperchain.cn"
+let g:gh_gitlab_only_http = 1
+
+" undo tree
+nnoremap <F5> :GundoToggle<CR>

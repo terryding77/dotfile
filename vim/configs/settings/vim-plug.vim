@@ -116,5 +116,8 @@ Plug 'cespare/vim-toml'
 Plug 'editorconfig/editorconfig-vim'
 " calculate startup's time
 Plug 'tweekmonster/startuptime.vim'
+Plug 'terryding77/vim-gh-line'
+Plug 'sjl/gundo.vim' " undo tree
+Plug 'wannesm/wmgraphviz.vim'
 " Initialize plugin system
 call plug#end()

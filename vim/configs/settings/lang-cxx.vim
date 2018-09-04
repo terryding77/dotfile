@@ -15,14 +15,14 @@ let g:ale_c_clangformat_options = '
 \       KeepEmptyLinesAtTheStartOfBlocks: false
 \   }"'
 
-" <F5> 编译和运行C
+" <leader>r 编译和运行C
 au filetype c nmap <leader>r :call CompileRunGcc()<CR>
 func! CompileRunGcc()
     exec "w"
     exec "!gcc % -o %< && ./%<"
 endfunc
 
-" <F5> 编译和运行CPP
+" <leader>r 编译和运行CPP
 au filetype cpp nmap <leader>r :call CompileRunGpp()<CR>
 func! CompileRunGpp()
     exec "w"
@@ -54,7 +54,7 @@ let g:ycm_collect_identifiers_from_tags_files=1 " 开启 YCM 基于标签引擎
 let g:ycm_min_num_of_chars_for_completion=2 " 从第2个键入字符就开始罗列匹配项
 let g:ycm_cache_omnifunc=0  " 禁止缓存匹配项,每次都重新生成匹配项
 let g:ycm_seed_identifiers_with_syntax=1    " 语法关键字补全
-nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
+"nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
 " force recomile with syntastic
 "nnoremap <leader>lo :lopen<CR> "open locationlist
 "nnoremap <leader>lc :lclose<CR>    "close locationlist

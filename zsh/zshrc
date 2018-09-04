@@ -39,8 +39,6 @@ COMPLETION_WAITING_DOTS="true"
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 HIST_STAMPS="yyyy-mm-dd"
 HISTFILE="$HOME/.zsh_history"
-HISTSIZE=10000000
-SAVEHIST=10000000
 setopt BANG_HIST                 # Treat the '!' character specially during expansion.
 setopt EXTENDED_HISTORY          # Write the history file in the ":start:elapsed;command" format.
 setopt INC_APPEND_HISTORY        # Write to the history file immediately, not when the shell exits.
@@ -80,6 +78,9 @@ source ${ZSH_CUSTOM}/os-detective.zsh
 # load oh my zsh file
 # other custom zsh config files(alias, env, theme) can be loaded by this file
 source $ZSH/oh-my-zsh.sh
+
+HISTSIZE=10000000
+SAVEHIST=10000000
 
 # load config depending on computer which would not sync between computers by git
 source ${HOME}/.zsh_custom
