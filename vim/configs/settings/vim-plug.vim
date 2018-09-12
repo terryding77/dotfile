@@ -27,7 +27,7 @@ Plug 'zchee/deoplete-go', { 'do': 'make', 'for': 'go' }
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                               Python Plugins                               "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'zchee/deoplete-jedi', {'for': 'python' }
+Plug 'terryding77/deoplete-jedi', {'for': 'python' }
 Plug 'davidhalter/jedi-vim', {'for': 'python' }
 Plug 'tell-k/vim-autopep8', {'for': 'python' }
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -119,5 +119,6 @@ Plug 'tweekmonster/startuptime.vim'
 Plug 'terryding77/vim-gh-line'
 Plug 'sjl/gundo.vim' " undo tree
 Plug 'wannesm/wmgraphviz.vim'
+Plug 'lilydjwg/fcitx.vim'
 " Initialize plugin system
 call plug#end()

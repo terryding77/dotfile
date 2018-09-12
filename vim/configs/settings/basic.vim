@@ -9,6 +9,7 @@ set mouse=a
 set cursorline
 
 set guifont=sauce\ code\ pro\ nf\ bold\ 12
+set ttimeoutlen=100
 
 " If you have vim >=8.0 or Neovim >= 0.1.5
 if (has("termguicolors"))
