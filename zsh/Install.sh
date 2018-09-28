@@ -26,6 +26,12 @@ function config-zsh()
     replace $zsh_file_path/custom                           ~/.oh-my-zsh/custom/custom
     touch ~/.zsh_custom && chmod +x ~/.zsh_custom
 }
+command -v zsh >/dev/null 2>&1 || { echo "cannot found zsh shell"; exit 1; }
+version=$(zsh --version | cut -d" " -f2)
+if [[ $version < "5.2.0" ]]; then
+    echo "this script need at least 5.2.0 version of zsh, please update"
+    exit 1
+fi
 
 
 check-env

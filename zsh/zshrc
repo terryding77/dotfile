@@ -63,13 +63,14 @@ plugins=(
     git
     golang
     sudo
-    tmux
     yarn
     zsh-autosuggestions
     zsh-syntax-highlighting
     zsh-nvm
     zsh_reload
 )
+
+command -v tmux >/dev/null 2>&1 && { plugins+=(tmux) }
 
 # load plugins depending on system
 # this file should load before oh-my-zsh for loading system specific zsh plugins
