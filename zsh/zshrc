@@ -73,7 +73,10 @@ plugins=(
 
 # load plugins depending on system
 # this file should load before oh-my-zsh for loading system specific zsh plugins
-source ${ZSH_CUSTOM}/os-detective.zsh
+source ${ZSH_CUSTOM}/systems/0-os-detective.zsh
+
+# load config depending on computer which would not sync between computers by git
+source ${HOME}/.zsh_custom
 
 # load oh my zsh file
 # other custom zsh config files(alias, env, theme) can be loaded by this file
@@ -81,8 +84,5 @@ source $ZSH/oh-my-zsh.sh
 
 HISTSIZE=10000000
 SAVEHIST=10000000
-
-# load config depending on computer which would not sync between computers by git
-source ${HOME}/.zsh_custom
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
