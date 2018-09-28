@@ -80,10 +80,28 @@ let g:ale_fixers = {}
 
 " leaderF
 let g:Lf_ShortcutF = '<leader>p'
-let g:Lf_RootMarks = ['.git', '.hg', '.svn']
+let g:Lf_ShortcutB = '<leader>lb'
+nmap <leader>lf :LeaderfFunctionAll<CR>
+nmap <leader>ls :LeaderfSelf<CR>
+nmap <leader>ll :LeaderfLineAll<CR>
+nmap <leader>lr :LeaderfHistoryCmd<CR>
+
+let g:Lf_RootMarks = ['.git', '.hg', '.svn', 'node_modules']
 let g:Lf_WorkingDirectoryMode = 'Ac'
-let g:Lf_HideHelp = 1
+let g:Lf_HideHelp = 0
+let g:Lf_PreviewCode = 1
+let g:Lf_RememberLastSearch = 1
 let g:Lf_DefaultMode = 'FullPath'
+let g:Lf_PreviewResult = {
+        \ 'File': 1,
+        \ 'Buffer': 1,
+        \ 'Mru': 1,
+        \ 'Tag': 1,
+        \ 'BufTag': 1,
+        \ 'Function': 1,
+        \ 'Line': 1,
+        \ 'Colorscheme': 1
+        \}
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                             fzf.vim settings                               "
@@ -98,11 +116,6 @@ let g:fzf_action = {
 " Default fzf layout
 " - down / up / left / right
 let g:fzf_layout = { 'down': '~40%' }
-
-" In Neovim, you can set up fzf window using a Vim command
-let g:fzf_layout = { 'window': 'enew' }
-let g:fzf_layout = { 'window': '-tabnew' }
-let g:fzf_layout = { 'window': '10split enew' }
 
 " Customize fzf colors to match your color scheme
 let g:fzf_colors =
@@ -166,19 +179,6 @@ command! -bang -nargs=* Rg
 " Likewise, Files command with preview window
 command! -bang -nargs=? -complete=dir Files
   \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
-" Mapping selecting mappings
-nmap <leader><tab> <plug>(fzf-maps-n)
-xmap <leader><tab> <plug>(fzf-maps-x)
-omap <leader><tab> <plug>(fzf-maps-o)
-
-" Insert mode completion
-imap <c-x><c-k> <plug>(fzf-complete-word)
-imap <c-x><c-f> <plug>(fzf-complete-path)
-imap <c-x><c-j> <plug>(fzf-complete-file-ag)
-imap <c-x><c-l> <plug>(fzf-complete-line)
-
-" Advanced customization using autoload functions
-inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                            indentLine settings                             "
