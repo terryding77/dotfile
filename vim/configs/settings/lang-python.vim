@@ -7,14 +7,6 @@ let g:ale_linters['python'] = ['flake8']
 let g:ale_fixers['python'] = ['autopep8']
 au filetype python nmap <leader>f :ALEFix<CR>
 " let g:ale_python_flake8_args = '-m flake8 --max-line-length=120'
-
-let g:deoplete#sources#jedi#show_docstring=1
-let g:deoplete#sources#jedi#python_path = 'python3'
-" let g:deoplete#sources#jedi#extra_path = [ '/usr/lib/python37.zip','/usr/lib/python3.7', '/usr/lib/python3.7/lib-dynload', '/usr/lib/python3.7/site-packages']
-" let g:deoplete#enable_profile = 1
-" let g:deoplete#sources#jedi#debug_server = 1
-" call deoplete#enable_logging('DEBUG', './deoplete.log')
-
 ""jedi
 let g:jedi#force_py_version = 3
 let g:jedi#goto_command = "<C-]>"

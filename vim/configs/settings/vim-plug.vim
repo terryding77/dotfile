@@ -7,14 +7,8 @@ if v:version > 800
     set pyxversion=0
 endif
 set pyxversion=3
-" auto complete plug; deoplete for vim8.0 need `has('python3')` for async " `pip3 install neovim` is required or `pacin python-neovim` in archlinux
-Plug 'Shougo/deoplete.nvim'  " Autocomplete engine
-autocmd FileType c,cpp let b:deoplete_disable_auto_complete = 1
-Plug 'roxma/nvim-yarp'
-Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'Shougo/neco-vim', {'for': 'vim'}
 Plug 'wellle/tmux-complete.vim'
-Plug 'fszymanski/deoplete-emoji'
 Plug 'ujihisa/neco-look'
 " Snippets are separated from the engine. Add this if you want them:
 Plug 'SirVer/ultisnips'
@@ -29,11 +23,9 @@ Plug 'autozimu/LanguageClient-neovim', {
 "                               Golang Plugins                               "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries', 'for': 'go' }
-Plug 'zchee/deoplete-go', { 'do': 'make', 'for': 'go' }
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                               Python Plugins                               "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'terryding77/deoplete-jedi', {'for': 'python' }
 Plug 'davidhalter/jedi-vim', {'for': 'python' }
 Plug 'tell-k/vim-autopep8', {'for': 'python' }
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -47,7 +39,6 @@ Plug 'ap/vim-css-color', { 'for': 'css' }
 " typescript
 Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 "Plug 'mxw/vim-jsx' ", { 'for': 'javascript.jsx' }
-Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern', 'for': 'js' }
 "Plug 'mhartington/nvim-typescript', { 'do': 'npm install -g typescript', 'for': 'typescript' }
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                               Theme Plugins                                "
@@ -55,17 +46,7 @@ Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern', 'for': 'js' }
 " vim airline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-" Plug 'morhetz/gruvbox'
-" Plug 'jacoborus/tender.vim'
-" Plug 'rakr/vim-one'
-" Plug 'drewtempelmeyer/palenight.vim'
-" Plug 'crusoexia/vim-monokai'
-" Plug 'chriskempson/base16-vim'
 Plug 'tyrannicaltoucan/vim-quantum'
-" Plug 'NLKNguyen/papercolor-theme'
-" Plug 'nanotech/jellybeans.vim'
-" Plug 'KeitaNakamura/neodark.vim'
-" Plug 'joshdick/onedark.vim'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                            CSV Relevant Plugins                            "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
