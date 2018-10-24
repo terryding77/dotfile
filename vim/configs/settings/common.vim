@@ -318,7 +318,7 @@ let g:mkdp_path_to_chrome = ""
 " 如果设置了该参数, g:mkdp_browserfunc 将被忽略
 let g:mkdp_browserfunc = 'MKDP_browserfunc_default'
 " vim 回调函数, 参数为要打开的 url
-let g:mkdp_auto_start = 1
+let g:mkdp_auto_start = 0
 " 设置为 1 可以在打开 markdown 文件的时候自动打开浏览器预览，只在打开 markdown 文件的时候打开一次
 let g:mkdp_auto_open = 1
 " 设置为 1 在编辑 markdown 的时候检查预览窗口是否已经打开，否则自动打开预览窗口
@@ -345,3 +345,10 @@ let g:gh_gitlab_only_http = 1
 
 " undo tree
 nnoremap <F5> :GundoToggle<CR>
+
+" lcn
+let g:LanguageClient_serverCommands = {
+    \ 'javascript': ['javascript-typescript-stdio'],
+    \ 'sh': ['bash-language-server', 'start'],
+    \ }
+
