@@ -105,8 +105,8 @@ let g:ale_fixers['vue'] = ['prettier']
 let g:ale_fixers['yaml'] = ['prettier']
 " ale
 let g:ale_linters = {}
-let g:ale_linters['c'] = ['clangd', 'clang'] " lsp
-let g:ale_linters['cpp'] = ['clangd', 'clang'] " lsp
+let g:ale_linters['c'] = ['clangd'] " lsp
+let g:ale_linters['cpp'] = ['clangd'] " lsp
 let g:ale_linters['css'] = ['csslint']
 let g:ale_linters['go'] = ['golangserver', 'gofmt', 'golint', 'go build'] " lsp
 "let g:ale_linters['java'] = ['javalsp'] " lsp

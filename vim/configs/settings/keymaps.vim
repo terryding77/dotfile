@@ -2,6 +2,8 @@ scriptencoding utf-8
 " set mapleader 将空格作为leader键
 let mapleader = ' '
 
+" 使用leader加sudo将不具备权限的文件写入
+map <leader>sudo :w !sudo tee %<CR>
 " set ctrl-hjkl to switch splited windows
 " 增加ctrl键加hjkl进行窗口间的移动
 map <c-h> <c-w>h

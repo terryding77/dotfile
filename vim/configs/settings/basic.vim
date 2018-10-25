@@ -1,3 +1,78 @@
+call plug#begin('~/.vim/plugged')
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                              Word Completion                               "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plug 'wellle/tmux-complete.vim'
+Plug 'ujihisa/neco-look'
+" Snippets are separated from the engine. Add this if you want them:
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                               Golang Plugins                               "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries', 'for': 'go' }
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                               Python Plugins                               "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plug 'davidhalter/jedi-vim', {'for': 'python' }
+Plug 'tell-k/vim-autopep8', {'for': 'python' }
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                            JS/HTML/CSS Plugins                             "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plug 'mattn/emmet-vim', { 'for': ['html', 'xml', 'typescript'] }
+Plug 'hail2u/vim-css3-syntax', { 'for': ['html', 'css', 'typescript'] }
+Plug 'groenewege/vim-less', { 'for': ['html', 'css', 'typescript'] }
+"Plug 'pangloss/vim-javascript'
+Plug 'ap/vim-css-color', { 'for': 'css' }
+" typescript
+Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
+"Plug 'mxw/vim-jsx' ", { 'for': 'javascript.jsx' }
+"Plug 'mhartington/nvim-typescript', { 'do': 'npm install -g typescript', 'for': 'typescript' }
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                        File Search Relevant Plugins                        "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" file search
+Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+" code search
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+" search highlight & enhance
+Plug 'haya14busa/incsearch.vim'
+" On-demand loading
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'ryanoasis/vim-devicons'
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                            Other Common Plugins                            "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Tagbar: a class outline viewer for Vim
+Plug 'majutsushi/tagbar'
+" start page
+Plug 'mhinz/vim-startify'
+" code leader space prettify
+Plug 'Yggdroot/indentLine'
+Plug 'kien/rainbow_parentheses.vim'
+Plug 'tpope/vim-surround'
+" Diff directories
+Plug 'will133/vim-dirdiff'
+let g:DirDiffExcludes = ".git,node_modules,vendor,dist,.DS_Store,.*.swp"
+" tmux navigator with vim
+" markdown
+Plug 'godlygeek/tabular' , {'for': 'markdown'}
+Plug 'plasticboy/vim-markdown' , {'for': 'markdown'}
+Plug 'iamcco/mathjax-support-for-mkdp' , {'for': 'markdown'}
+Plug 'iamcco/markdown-preview.vim' , {'for': 'markdown'}
+" json
+Plug 'elzr/vim-json'
+" unload file buffer without destory window layout
+" comment
+Plug 'cespare/vim-toml'
+Plug 'editorconfig/editorconfig-vim'
+" calculate startup's time
+Plug 'tweekmonster/startuptime.vim'
+Plug 'sjl/gundo.vim' " undo tree
+Plug 'wannesm/wmgraphviz.vim'
+" Initialize plugin system
+call plug#end()
 scriptencoding utf-8
 set hlsearch
 set mouse=a
@@ -87,5 +162,72 @@ map / <Plug>(incsearch-forward)
 map ? <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
 """"""end""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                            indentLine settings                             "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-map <leader>sudo :w !sudo tee %<CR>
+" Vim
+let g:indentLine_char='┆'
+let g:indentLine_enabled = 1
+let g:indentLine_color_term = 239
+" none X terminal
+let g:indentLine_color_tty_light = 7 " (default: 4)
+let g:indentLine_color_dark = 1 " (default: 2)
+let g:indentLine_bgcolor_term = 111
+let g:indentLine_first_char = '┆'              "设置对齐线的首字符
+let g:indentLine_showFirstIndentLevel = 0   "显示对齐线首字符
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                              Bufkill settings                              "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                             nerdtree settings                              "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" close vim if the only window left open is a NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+nmap <F3> :NERDTreeToggle<CR>
+nmap <F8> :TagbarToggle<CR>
+
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_yarp = 1
+let g:deoplete#enable_camel_case = 1
+let g:deoplete#enable_refresh_always = 1
+let g:deoplete#omni#input_patterns = {}
+let g:deoplete#omni#input_patterns.javascript = '[^. *\t]\.\w*'
+inoremap <silent><expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+nnoremap <silent> <C-w>w :ZoomWin<CR>
+
+" nerdtree git plugin
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ "Unknown"   : "?"
+    \ }
+
+" nerdtree syntax highlight
+"let g:NERDTreeFileExtensionHighlightFullName = 1
+"let g:NERDTreeExactMatchHighlightFullName = 1
+"let g:NERDTreePatternMatchHighlightFullName = 1
+"let g:NERDTreeHighlightFolders = 1 " enables folder icon highlighting using exact match
+"let g:NERDTreeHighlightFoldersFullName = 1 " highlights the folder name
+
+
+
+" undo tree
+nnoremap <F5> :GundoToggle<CR>
