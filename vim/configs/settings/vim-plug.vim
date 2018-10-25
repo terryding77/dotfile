@@ -11,14 +11,6 @@ Plug 'Shougo/neco-vim', {'for': 'vim'}
 Plug 'wellle/tmux-complete.vim'
 Plug 'ujihisa/neco-look'
 " Snippets are separated from the engine. Add this if you want them:
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                               Golang Plugins                               "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -41,18 +33,6 @@ Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 "Plug 'mxw/vim-jsx' ", { 'for': 'javascript.jsx' }
 "Plug 'mhartington/nvim-typescript', { 'do': 'npm install -g typescript', 'for': 'typescript' }
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                               Theme Plugins                                "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" vim airline
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'tyrannicaltoucan/vim-quantum'
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                            CSV Relevant Plugins                            "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-fugitive'
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                        File Search Relevant Plugins                        "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " file search
@@ -68,11 +48,6 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'ryanoasis/vim-devicons'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                             Code Lint Plugins                              "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" async lint
-Plug 'w0rp/ale'
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                            Other Common Plugins                            "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tagbar: a class outline viewer for Vim
@@ -87,7 +62,6 @@ Plug 'tpope/vim-surround'
 Plug 'will133/vim-dirdiff'
 let g:DirDiffExcludes = ".git,node_modules,vendor,dist,.DS_Store,.*.swp"
 " tmux navigator with vim
-Plug 'christoomey/vim-tmux-navigator'
 " markdown
 Plug 'godlygeek/tabular' , {'for': 'markdown'}
 Plug 'plasticboy/vim-markdown' , {'for': 'markdown'}
@@ -96,16 +70,12 @@ Plug 'iamcco/markdown-preview.vim' , {'for': 'markdown'}
 " json
 Plug 'elzr/vim-json'
 " unload file buffer without destory window layout
-Plug 'qpkorr/vim-bufkill'
 " comment
-Plug 'tpope/vim-commentary'
 Plug 'cespare/vim-toml'
 Plug 'editorconfig/editorconfig-vim'
 " calculate startup's time
 Plug 'tweekmonster/startuptime.vim'
-Plug 'terryding77/vim-gh-line'
 Plug 'sjl/gundo.vim' " undo tree
 Plug 'wannesm/wmgraphviz.vim'
-Plug 'lilydjwg/fcitx.vim'
 " Initialize plugin system
 call plug#end()

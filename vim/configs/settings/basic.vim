@@ -1,54 +1,26 @@
-set number
+scriptencoding utf-8
 set hlsearch
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set expandtab
-set backspace=indent,eol,start
 set mouse=a
 set cursorline
 
 set guifont=sauce\ code\ pro\ nf\ bold\ 12
 set ttimeoutlen=100
 
-" If you have vim >=8.0 or Neovim >= 0.1.5
-if (has("termguicolors"))
- set termguicolors
-endif
-set t_Co=256
-set background=dark
-syntax on
-let g:quantum_black=1
-colorscheme quantum
 
 set wildmode=list,longest
 set wildmenu
 
-" set viminfo location 
+" set viminfo location
 set viminfo+=n~/.vim/.viminfo
 
-" show last edit position when we reopen file 
-"au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif  
-
-" set ctrl-hjkl to switch splited windows
-map <c-h> <c-w>h
-map <c-j> <c-w>j
-map <c-k> <c-w>k
-map <c-l> <c-w>l
+" show last edit position when we reopen file
+"au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
 
 " set transparent
 hi Normal ctermbg=NONE
 hi NonText ctermbg=none
 hi LineNr ctermbg=none
 
-" set mapleader
-let mapleader = " "
-
-" set leader tab mark 
-" 显示tab和空格
-set list
-" 设置tab和空格样式
-set lcs=tab:\|\ ,nbsp:%,trail:-
 
 nnoremap ? :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
 function! AutoHighlightToggle()
@@ -108,8 +80,8 @@ augroup END
 " https://stackoverflow.com/questions/15123477/tmux-tabs-with-name-of-file-open-in-vim
 autocmd BufReadPost,FileReadPost,BufNewFile * call system("tmux rename-window " . expand("%:t"))
 """"""incsearch settings""
-"input `/`or`?`or`g/`to search like default vim action 
-"when searching press `tab` move to next result 
+"input `/`or`?`or`g/`to search like default vim action
+"when searching press `tab` move to next result
 "press `ctrl+j` scroll page down
 map / <Plug>(incsearch-forward)
 map ? <Plug>(incsearch-backward)

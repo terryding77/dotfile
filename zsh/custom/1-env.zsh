@@ -9,4 +9,3 @@ export MANPATH="/usr/local/man:$MANPATH"
 
 # Preferred editor for local and remote sessions
 export EDITOR='vim'
-
