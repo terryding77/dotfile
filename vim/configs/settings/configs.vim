@@ -2,6 +2,8 @@ scriptencoding utf-8
 set mouse=a
 set ttymouse=xterm
 
+" 设置搜索高亮
+set hlsearch
 " 显示tab和空格
 set list
 " 设置tab和空格样式
@@ -27,15 +29,9 @@ set background=dark
 syntax on
 let g:quantum_black=1
 colorscheme quantum
-" let g:nord_italic_comments = 1
-" let g:nord_comment_brightness = 12
-" let g:nord_uniform_diff_background = 1
-" let g:nord_cursor_line_number_background = 1
-" colorscheme nord
 
 " airline theme
 let g:airline_theme='quantum'
-" let g:airline_theme='nord'
 
 let g:airline_powerline_fonts = 1
 let g:airline_detect_modified=1
@@ -169,3 +165,9 @@ let g:gh_use_canonical = 0
 " Use self deployed gitlab:
 let g:gh_gitlab_domain = 'git.hyperchain.cn'
 let g:gh_gitlab_only_http = 1
+
+" denite
+" 使用ag作为搜索指令
+call denite#custom#var('file/rec', 'command', ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
+" Change default prompt
+call denite#custom#option('default', 'prompt', '输入搜索内容:')

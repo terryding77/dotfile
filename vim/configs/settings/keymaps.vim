@@ -11,8 +11,28 @@ map <c-j> <c-w>j
 map <c-k> <c-w>k
 map <c-l> <c-w>l
 
-" airline
-" 增加leader配数字键移动到指定下标的窗口
+" 调整缩进后自动选中，方便再次操作
+vnoremap < <gv
+vnoremap > >gv
+
+nmap <leader>w :w<CR>
+fu! OpenTerminal()
+    " open split windows on the topleft
+    botright split
+    " resize the height of terminal windows to 30
+    resize 10
+    :call term_start('zsh', {'curwin' : 1, 'term_finish' : 'close'})
+endf
+nmap <leader>t :call OpenTerminal()<CR>
+
+"Keep search pattern at the center of the screen."
+nnoremap <silent> n nzz
+nnoremap <silent> N Nzz
+nnoremap <silent> * *zz
+nnoremap <silent> # #zz
+nnoremap <silent> g* g*zz
+
+" airline 增加leader配数字键移动到指定下标的窗口
 let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
 nmap <leader>1 <Plug>AirlineSelectTab1
 nmap <leader>2 <Plug>AirlineSelectTab2
@@ -71,3 +91,13 @@ let g:gh_line_map = '<leader>gh'
 
 " Bufkill
 nmap <leader>x :BD<CR>
+
+" ultisnips Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger='<tab>'
+let g:UltiSnipsJumpForwardTrigger='<tab>'
+let g:UltiSnipsJumpBackwardTrigger='<s-tab>'
+
+" denite
+" Change mappings.
+call denite#custom#map('insert', '<C-j>', '<denite:move_to_next_line>', 'noremap')
+call denite#custom#map('insert', '<C-k>', '<denite:move_to_previous_line>', 'noremap')

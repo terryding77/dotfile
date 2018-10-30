@@ -1,22 +1,9 @@
 call plug#begin('~/.vim/plugged')
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                              Word Completion                               "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'wellle/tmux-complete.vim'
 Plug 'ujihisa/neco-look'
-" Snippets are separated from the engine. Add this if you want them:
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                               Golang Plugins                               "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries', 'for': 'go' }
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                               Python Plugins                               "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'davidhalter/jedi-vim', {'for': 'python' }
 Plug 'tell-k/vim-autopep8', {'for': 'python' }
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                            JS/HTML/CSS Plugins                             "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'mattn/emmet-vim', { 'for': ['html', 'xml', 'typescript'] }
 Plug 'hail2u/vim-css3-syntax', { 'for': ['html', 'css', 'typescript'] }
 Plug 'groenewege/vim-less', { 'for': ['html', 'css', 'typescript'] }
@@ -26,9 +13,6 @@ Plug 'ap/vim-css-color', { 'for': 'css' }
 Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 "Plug 'mxw/vim-jsx' ", { 'for': 'javascript.jsx' }
 "Plug 'mhartington/nvim-typescript', { 'do': 'npm install -g typescript', 'for': 'typescript' }
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                        File Search Relevant Plugins                        "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " file search
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 " code search
@@ -41,9 +25,6 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'ryanoasis/vim-devicons'
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                            Other Common Plugins                            "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tagbar: a class outline viewer for Vim
 Plug 'majutsushi/tagbar'
 " start page
@@ -74,7 +55,6 @@ Plug 'wannesm/wmgraphviz.vim'
 " Initialize plugin system
 call plug#end()
 scriptencoding utf-8
-set hlsearch
 set mouse=a
 set cursorline
 
@@ -120,26 +100,6 @@ endfunction
 " set tags search from current directory to root
 set tags=tags;
 
-" 调整缩进后自动选中，方便再次操作
-vnoremap < <gv
-vnoremap > >gv
-
-nmap <leader>w :w<CR>
-fu! OpenTerminal()
-    " open split windows on the topleft
-    botright split
-    " resize the height of terminal windows to 30
-    resize 10
-    :call term_start('zsh', {'curwin' : 1, 'term_finish' : 'close'})
-endf
-nmap <leader>t :call OpenTerminal()<CR>
-
-"Keep search pattern at the center of the screen."
-nnoremap <silent> n nzz
-nnoremap <silent> N Nzz
-nnoremap <silent> * *zz
-nnoremap <silent> # #zz
-nnoremap <silent> g* g*zz
 
 
 " Source the vimrc file after saving it
@@ -200,10 +160,6 @@ let g:deoplete#omni#input_patterns = {}
 let g:deoplete#omni#input_patterns.javascript = '[^. *\t]\.\w*'
 inoremap <silent><expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 nnoremap <silent> <C-w>w :ZoomWin<CR>
 
