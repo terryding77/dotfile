@@ -69,6 +69,7 @@ plugins=(
     zsh-syntax-highlighting
     zsh-nvm
     zsh_reload
+    zsh-docker-aliases
 )
 
 command -v tmux >/dev/null 2>&1 && { plugins+=(tmux) }

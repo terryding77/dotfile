@@ -16,3 +16,6 @@
 [submodule "tmux/tpm"]
 	path = tmux/tpm
 	url = https://github.com/tmux-plugins/tpm
+[submodule "zsh/custom/plugins/zsh-docker-aliases"]
+	path = zsh/custom/plugins/zsh-docker-aliases
+	url = https://github.com/akarzim/zsh-docker-aliases.git
