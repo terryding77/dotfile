@@ -16,8 +16,8 @@ Plug 'vim-airline/vim-airline'
 Plug 'w0rp/ale'
 " completion
 """"" coc use for typescript
-Plug 'neoclide/coc.nvim', {'do': 'yarn install', 'for': ['typescript', 'typescript.tsx']}
-""""" ncm2 use for python
+" Plug 'neoclide/coc.nvim', {'do': 'yarn install', 'for': ['typescript', 'typescript.tsx']}
+"""" ncm2 use for python
 Plug 'ncm2/ncm2', {'for': ['python']}
 if has('nvim')
 else
@@ -31,11 +31,11 @@ Plug 'ncm2/ncm2-go', {'for': ['go']}
 Plug 'ncm2/ncm2-ultisnips', {'for': ['python']}
 Plug 'ncm2/ncm2-vim', {'for': 'vim'} | Plug 'Shougo/neco-vim', {'for': 'vim'}
 """"" deoplete
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins', 'for': ['go'] }
-else
-"  Plug 'Shougo/deoplete.nvim' ", {'for': ['go']}
-endif
+" if has('nvim')
+"   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins', 'for': ['go'] }
+" else
+"   Plug 'Shougo/deoplete.nvim' ", {'for': ['go']}
+" endif
 let g:deoplete#enable_at_startup = 1
 """"" snippets
 Plug 'SirVer/ultisnips'
@@ -57,5 +57,9 @@ Plug 'qpkorr/vim-bufkill'
 Plug 'Shougo/denite.nvim'
 " chinese input
 Plug 'lilydjwg/fcitx.vim'
+" calculate startup's time
+Plug 'tweekmonster/startuptime.vim'
+" On-demand loading
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 " Initialize plugin system
 call plug#end()

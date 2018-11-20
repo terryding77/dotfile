@@ -59,6 +59,7 @@ plugins=(
     command-not-found
     common-aliases
     colored-man-pages
+    docker
     extract
     git
     golang

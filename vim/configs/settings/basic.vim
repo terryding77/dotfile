@@ -48,9 +48,6 @@ Plug 'elzr/vim-json'
 " comment
 Plug 'cespare/vim-toml'
 Plug 'editorconfig/editorconfig-vim'
-" calculate startup's time
-Plug 'tweekmonster/startuptime.vim'
-Plug 'sjl/gundo.vim' " undo tree
 Plug 'wannesm/wmgraphviz.vim'
 " Initialize plugin system
 call plug#end()
@@ -138,10 +135,6 @@ let g:indentLine_first_char = '┆'              "设置对齐线的首字符
 let g:indentLine_showFirstIndentLevel = 0   "显示对齐线首字符
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                              Bufkill settings                              "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                             nerdtree settings                              "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -150,15 +143,6 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 nmap <F3> :NERDTreeToggle<CR>
 nmap <F8> :TagbarToggle<CR>
-
-" Use deoplete.
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_yarp = 1
-let g:deoplete#enable_camel_case = 1
-let g:deoplete#enable_refresh_always = 1
-let g:deoplete#omni#input_patterns = {}
-let g:deoplete#omni#input_patterns.javascript = '[^. *\t]\.\w*'
-inoremap <silent><expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 
 
 nnoremap <silent> <C-w>w :ZoomWin<CR>
@@ -182,8 +166,3 @@ let g:NERDTreeIndicatorMapCustom = {
 "let g:NERDTreePatternMatchHighlightFullName = 1
 "let g:NERDTreeHighlightFolders = 1 " enables folder icon highlighting using exact match
 "let g:NERDTreeHighlightFoldersFullName = 1 " highlights the folder name
-
-
-
-" undo tree
-nnoremap <F5> :GundoToggle<CR>

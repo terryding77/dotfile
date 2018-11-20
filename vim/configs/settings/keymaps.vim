@@ -2,6 +2,10 @@ scriptencoding utf-8
 " set mapleader 将空格作为leader键
 let mapleader = ' '
 
+" stop myself hitting them accidentally (particularly q:):
+map q: <Nop>
+nnoremap Q <nop>
+
 " 使用leader加sudo将不具备权限的文件写入
 map <leader>sudo :w !sudo tee %<CR>
 " set ctrl-hjkl to switch splited windows
@@ -79,7 +83,7 @@ nmap <leader>e :ALEDetail<CR>
 nmap <leader>e :ALEDetail<CR>
 nmap <leader>f :ALEFindReferences<CR>
 nmap <leader>g :ALEGoToDefinition<CR>
-nnoremap <C-]> :ALEGoToDefinition<CR>
+nnoremap <C-]> :ALEGoToDefinition<CR>kj
 nnoremap <C-LeftMouse> :ALEGoToDefinition<CR>
 
 " vim-gh-line
@@ -101,3 +105,6 @@ let g:UltiSnipsJumpBackwardTrigger='<s-tab>'
 " Change mappings.
 call denite#custom#map('insert', '<C-j>', '<denite:move_to_next_line>', 'noremap')
 call denite#custom#map('insert', '<C-k>', '<denite:move_to_previous_line>', 'noremap')
+
+" nerdtree
+nmap <F3> :NERDTreeToggle<CR>
