@@ -2,6 +2,9 @@ scriptencoding utf-8
 set mouse=a
 set ttymouse=xterm
 
+" always show signcolumns
+set signcolumn=yes
+
 " 设置搜索高亮
 set hlsearch
 " 显示tab和空格
@@ -104,7 +107,8 @@ let g:ale_linters = {}
 let g:ale_linters['c'] = ['clangd'] " lsp
 let g:ale_linters['cpp'] = ['clangd'] " lsp
 let g:ale_linters['css'] = ['csslint']
-let g:ale_linters['go'] = ['golangserver', 'gofmt', 'golint', 'go build'] " lsp
+let g:ale_linters['go'] = ['golangserver', 'gofmt', 'golint', 'go build', 'gometalinter'] " lsp
+let g:ale_go_gometalinter_options = '--fast'
 "let g:ale_linters['java'] = ['javalsp'] " lsp
 "let g:ale_java_javalsp_jar = 'javacs.jar'
 let g:ale_linters['javascript'] = ['tsserver'] " lsp
@@ -171,3 +175,7 @@ let g:gh_gitlab_only_http = 1
 call denite#custom#var('file/rec', 'command', ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
 " Change default prompt
 call denite#custom#option('default', 'prompt', '输入搜索内容:')
+
+" coc
+" Close preview window when completion is done.
+autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif

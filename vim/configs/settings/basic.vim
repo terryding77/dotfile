@@ -1,18 +1,10 @@
 call plug#begin('~/.vim/plugged')
-Plug 'wellle/tmux-complete.vim'
-Plug 'ujihisa/neco-look'
-Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries', 'for': 'go' }
-Plug 'davidhalter/jedi-vim', {'for': 'python' }
-Plug 'tell-k/vim-autopep8', {'for': 'python' }
 Plug 'mattn/emmet-vim', { 'for': ['html', 'xml', 'typescript'] }
 Plug 'hail2u/vim-css3-syntax', { 'for': ['html', 'css', 'typescript'] }
 Plug 'groenewege/vim-less', { 'for': ['html', 'css', 'typescript'] }
 "Plug 'pangloss/vim-javascript'
 Plug 'ap/vim-css-color', { 'for': 'css' }
 " typescript
-Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
-"Plug 'mxw/vim-jsx' ", { 'for': 'javascript.jsx' }
-"Plug 'mhartington/nvim-typescript', { 'do': 'npm install -g typescript', 'for': 'typescript' }
 " file search
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 " code search
@@ -31,7 +23,6 @@ Plug 'majutsushi/tagbar'
 Plug 'mhinz/vim-startify'
 " code leader space prettify
 Plug 'Yggdroot/indentLine'
-Plug 'kien/rainbow_parentheses.vim'
 Plug 'tpope/vim-surround'
 " Diff directories
 Plug 'will133/vim-dirdiff'
@@ -41,13 +32,8 @@ let g:DirDiffExcludes = ".git,node_modules,vendor,dist,.DS_Store,.*.swp"
 Plug 'godlygeek/tabular' , {'for': 'markdown'}
 Plug 'plasticboy/vim-markdown' , {'for': 'markdown'}
 Plug 'iamcco/mathjax-support-for-mkdp' , {'for': 'markdown'}
-Plug 'iamcco/markdown-preview.vim' , {'for': 'markdown'}
-" json
-Plug 'elzr/vim-json'
-" unload file buffer without destory window layout
 " comment
 Plug 'cespare/vim-toml'
-Plug 'editorconfig/editorconfig-vim'
 Plug 'wannesm/wmgraphviz.vim'
 " Initialize plugin system
 call plug#end()
@@ -96,8 +82,6 @@ endfunction
 
 " set tags search from current directory to root
 set tags=tags;
-
-
 
 " Source the vimrc file after saving it
 augroup ReloadVimrc

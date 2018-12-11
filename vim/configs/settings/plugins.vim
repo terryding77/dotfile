@@ -14,29 +14,12 @@ Plug 'vim-airline/vim-airline'
 " 2 coding
 " linter and fixer
 Plug 'w0rp/ale'
+Plug 'editorconfig/editorconfig-vim'
 " completion
-""""" coc use for typescript
-" Plug 'neoclide/coc.nvim', {'do': 'yarn install', 'for': ['typescript', 'typescript.tsx']}
-"""" ncm2 use for python
-Plug 'ncm2/ncm2', {'for': ['python']}
-if has('nvim')
-else
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-autocmd BufEnter * call ncm2#enable_for_buffer()
-set completeopt=noinsert,menuone,noselect
-Plug 'ncm2/ncm2-jedi', {'for': ['python']}
-Plug 'ncm2/ncm2-go', {'for': ['go']}
-Plug 'ncm2/ncm2-ultisnips', {'for': ['python']}
-Plug 'ncm2/ncm2-vim', {'for': 'vim'} | Plug 'Shougo/neco-vim', {'for': 'vim'}
-""""" deoplete
-" if has('nvim')
-"   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins', 'for': ['go'] }
-" else
-"   Plug 'Shougo/deoplete.nvim' ", {'for': ['go']}
-" endif
-let g:deoplete#enable_at_startup = 1
+""""" coc - use `npm install -g vim-node-rpc` before install
+Plug 'Shougo/neco-vim'
+Plug 'neoclide/coc-neco'
+Plug 'neoclide/coc.nvim', {'do': 'yarn install'}
 """"" snippets
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
@@ -45,6 +28,8 @@ Plug 'tpope/vim-commentary'
 " csv
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
+" compile and run
+Plug 'thinca/vim-quickrun'
 " github and gitlab website jump
 Plug 'terryding77/vim-gh-line'
 

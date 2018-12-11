@@ -1,0 +1,20 @@
+{
+  "coc.preferences.diagnostic.enable": false,
+  "coc.preferences.snippetIndicator": "~<snippet>",
+  "languageserver": {
+    "golang": {
+      "command": "go-langserver",
+      "filetypes": ["go"],
+      "revealOutputChannelOn": "never",
+      "initializationOptions": {
+        "gocodeCompletionEnabled": true,
+        "diagnosticsEnabled": true,
+        "lintTool": "golint"
+      }
+    },
+    "clangd": {
+      "command": "clangd",
+      "filetypes": ["c", "cpp", "objc", "objcpp"]
+    }
+  }
+}

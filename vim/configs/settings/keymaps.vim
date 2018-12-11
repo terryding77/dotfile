@@ -67,9 +67,9 @@ nnoremap <silent> <leader>ga :Git add -p %<CR>
 nnoremap <silent> <leader>gg :SignifyToggle<CR>
 
 " gitgutter
-" nmap <leader>+ <Plug>GitGutterNextHunk
-" nmap <leader>= <Plug>GitGutterNextHunk
-" nmap <leader>- <Plug>GitGutterPrevHunk
+"普通模式下，leader{前往上一个git修改，leader}前往下一个git修改
+nmap <leader>{ <Plug>GitGutterPrevHunk
+nmap <leader>} <Plug>GitGutterNextHunk
 nmap <leader>u <Plug>GitGutterUndoHunk
 
 " ale
@@ -80,11 +80,9 @@ nmap <leader>] <Plug>(ale_next_wrap)
 "nmap <Leader>s :ALEToggle<CR>
 "<Leader>d查看错误或警告的详细信息
 nmap <leader>e :ALEDetail<CR>
-nmap <leader>e :ALEDetail<CR>
 nmap <leader>f :ALEFindReferences<CR>
 nmap <leader>g :ALEGoToDefinition<CR>
 nnoremap <C-]> :ALEGoToDefinition<CR>kj
-nnoremap <C-LeftMouse> :ALEGoToDefinition<CR>
 
 " vim-gh-line
 " 用于在git仓库的代码里直接通过快捷键进入仓库网站
@@ -96,10 +94,12 @@ let g:gh_line_map = '<leader>gh'
 " Bufkill
 nmap <leader>x :BD<CR>
 
-" ultisnips Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger='<tab>'
-let g:UltiSnipsJumpForwardTrigger='<tab>'
-let g:UltiSnipsJumpBackwardTrigger='<s-tab>'
+" ultisnips
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+" let g:UltiSnipsExpandTrigger='<tab>'
+" let g:UltiSnipsJumpForwardTrigger='<tab>'
+" let g:UltiSnipsJumpBackwardTrigger='<s-tab>'
+let g:UltiSnipsExpandTrigger='<c-l>'
 
 " denite
 " Change mappings.
@@ -108,3 +108,80 @@ call denite#custom#map('insert', '<C-k>', '<denite:move_to_previous_line>', 'nor
 
 " nerdtree
 nmap <F3> :NERDTreeToggle<CR>
+
+" coc
+" 使用cr来代替默认的ctrl-y进行snippets的选择操作
+" Use <cr> for confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Use <Tab> and <S-Tab> for navigate completion list
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Remap keys for gotos
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+function! s:show_documentation()
+  if &filetype == 'vim'
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Remap for rename current word
+nmap <leader>n <Plug>(coc-rename)
+" Use K for show documentation in preview window
+nnoremap <silent> <leader>d :call <SID>show_documentation()<CR>
+
+" " Setup formatexpr specified filetype(s).
+" augroup cocgroup
+"   autocmd!
+"   autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+" augroup end
+" " Shortcuts for denite interface
+" " Show extension list
+" nnoremap <silent> <space>e  :<C-u>Denite coc-extension<cr>
+" " Show symbols of current buffer
+" nnoremap <silent> <space>o  :<C-u>Denite coc-symbols<cr>
+" " Search symbols of current workspace
+" nnoremap <silent> <space>t  :<C-u>Denite coc-workspace<cr>
+" " Show available commands
+" nnoremap <silent> <space>c  :<C-u>Denite coc-command<cr>
+" " Show available services
+" nnoremap <silent> <space>s  :<C-u>Denite coc-service<cr>
+" " Show links of current buffer
+" nnoremap <silent> <space>l  :<C-u>Denite coc-link<cr>
+
+" SingleCompile
+" 单文件编译运行插件
+nmap <F9> :SCCompile<cr>
+nmap <F10> :SCCompileRun<cr><cr>
+" nmap <leader>b :SCCompile<cr>
+nmap <leader>r :SCCompileRun<cr><cr>
+
+" quickrun
+let g:quickrun_config = {
+\   "_" : {
+\       "outputter" : "message",
+\   },
+\}
+
+let g:quickrun_no_default_key_mappings = 1
+nmap <Leader>r <Plug>(quickrun)
+map <F10> :QuickRun<CR>
