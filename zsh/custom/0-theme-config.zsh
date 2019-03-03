@@ -6,58 +6,55 @@ if [[ $TERMINAL_EMULATOR == "JetBrains-JediTerm" ]]; then
     ZSH_THEME="robbyrussell"
 else
     ZSH_THEME="powerlevel9k/powerlevel9k"
-    P9K_LEFT_PROMPT_ELEMENTS=(dir dir_writable vcs context ssh virtualenv)
-    P9K_RIGHT_PROMPT_ELEMENTS=(command_execution_time status root_indicator background_jobs history ram time)
-    P9K_MULTILINE_FIRST_PROMPT_PREFIX_ICON=""
-    P9K_MULTILINE_LAST_PROMPT_PREFIX_ICON=" %F{blue}%F{white} "
-    P9K_PROMPT_ON_NEWLINE=true
-    P9K_RPROMPT_ON_NEWLINE=true
-    P9K_DIR_SHORTEN_LENGTH=4
+
+    # enabled plugins
+    P9K_LEFT_PROMPT_ELEMENTS=(dir vcs context virtualenv newline os_icon)
+    P9K_RIGHT_PROMPT_ELEMENTS=(command_execution_time status background_jobs battery history ram time)
+
+    # font settings
     P9K_MODE="nerdfont-complete"
-    #powerlevel9k dir plugin
+
+    #powerlevel9k plugin setings
+    #segments/background_jobs
+    P9K_BACKGROUND_JOBS_ICON="个任务在后台执行中"
+    #segments/battery
+    P9K_BATTERY_VERBOSE=true
+    #segments/command_execution_time
+    P9K_COMMAND_EXECUTION_TIME_THRESHOLD=5
+    P9K_COMMAND_EXECUTION_TIME_ICON=""
+    #segments/context
+    P9K_CONTEXT_TEMPLATE="%n@`hostname -f`"
+    P9K_CONTEXT_REMOTE_ICON=" 远程连接"
+    #segments/dir
+    P9K_DIR_SHORTEN_LENGTH=4
     P9K_DIR_DEFAULT_ICON=''
-    #time plugin
+    P9K_DIR_SHOW_WRITABLE=true
+    P9K_DIR_HOME_BACKGROUND='green'
+    P9K_DIR_HOME_SUBFOLDER_BACKGROUND='green'
+    P9K_DIR_NOT_WRITABLE_BACKGROUND="red"
+    P9K_DIR_ETC_BACKGROUND="yellow"
+    #segments/history
+    P9K_HISTORY_ICON=""
+    #segments/os_icon
+    P9K_OS_ICON_BACKGROUND='darkgrey'
+    #segments/ram
+    P9K_RAM_ICON="Mem"
+    #segments/status
+    P9K_STATUS_OK=false
+    P9K_STATUS_ERROR_CR_ICON="返回值错误"
+    P9K_STATUS_HIDE_SIGNAME=true
+    #segments/time
     P9K_TIME_BACKGROUND="black"
     P9K_TIME_FOREGROUND="249"
-    P9K_TIME_FORMAT=" %D{%H:%M  %Y-%m-%d}"
-    # status
-    P9K_STATUS_OK_IN_NON_VERBOSE=true
-    # vcs
+    P9K_TIME_ICON=""
+    P9K_TIME_FORMAT="%D{ %Y-%m-%d  %H:%M:%S}"
+    #segments/vcs
+    P9K_VCS_SHOW_SUBMODULE_DIRTY=false
+    P9K_VCS_HIDE_BRANCH_ICON=true
     P9K_VCS_UNTRACKED_ICON=''
     P9K_VCS_UNSTAGED_ICON='±'
     P9K_VCS_INCOMING_CHANGES_ICON='↓'
     P9K_VCS_OUTGOING_CHANGES_ICON='↑'
-    P9K_VCS_COMMIT_ICON=''
+    #segments/virtualenv
+    P9K_VIRTUALENV_ICON=""
 fi
-
-# POWERLEVEL9K_DIR_HOME_BACKGROUND='191919'
-# POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND='191919'
-# POWERLEVEL9K_DIR_ETC_BACKGROUND='191919'
-# POWERLEVEL9K_DIR_DEFAULT_BACKGROUND='191919'
-
-# POWERLEVEL9K_DIR_HOME_FOREGROUND='green'
-# POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND='green'
-# POWERLEVEL9K_DIR_ETC_FOREGROUND='green'
-# POWERLEVEL9K_DIR_DEFAULT_FOREGROUND='green'
-    #POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir dir_writable vcs context ssh virtualenv)
-    #POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(command_execution_time status root_indicator background_jobs history ram time)
-    #POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=""
-    #POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX=" %F{blue}%F{white} "
-    #POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-    #POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
-    #POWERLEVEL9K_SHORTEN_DIR_LENGTH=4
-    #POWERLEVEL9K_MODE="nerdfont-complete"
-    ##powerlevel9k dir plugin
-    #POWERLEVEL9K_FOLDER_ICON=''
-    ##time plugin
-    #POWERLEVEL9K_TIME_BACKGROUND="black"
-    #POWERLEVEL9K_TIME_FOREGROUND="249"
-    #POWERLEVEL9K_TIME_FORMAT=" %D{%H:%M  %Y-%m-%d}"
-    ## status
-    #POWERLEVEL9K_STATUS_OK_IN_NON_VERBOSE=true
-    ## vcs
-    #POWERLEVEL9K_VCS_UNTRACKED_ICON=''
-    #POWERLEVEL9K_VCS_UNSTAGED_ICON='±'
-    #POWERLEVEL9K_VCS_INCOMING_CHANGES_ICON='↓'
-    #POWERLEVEL9K_VCS_OUTGOING_CHANGES_ICON='↑'
-    #POWERLEVEL9K_VCS_COMMIT_ICON=''
