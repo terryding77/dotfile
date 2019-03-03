@@ -10,3 +10,5 @@ export MANPATH="/usr/local/man:$MANPATH"
 # Preferred editor for local and remote sessions
 export EDITOR='vim'
 
+# zsh plugin env
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='bg=white,fg=black'

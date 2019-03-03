@@ -11,16 +11,28 @@ function check-env()
 
 function replace()
 {
-    # argument in `replace` as order in `ln` 
+    # argument in `replace` as order in `ln`
     echo -e "[info] replace local config $2"
     mv -f $2 $bak_dir 2>/dev/null
     ln -s $@
+}
+
+function install-dependence()
+{
+    # coc plugin dependence
+    npm install -g vim-node-rpc
+    npm install -g dockerfile-language-server-nodejs
+    # golang dependence
+    go get -u -v github.com/nsf/gocode
+    go get -u -v github.com/sourcegraph/go-langserver
+    go get -u -v golang.org/x/lint/golint
 }
 
 function config-vim()
 {
     echo -e "\nConfig vim"
     check-env
+    install-dependence
     replace $vim_file_path/configs ~/.vim
 }
 

@@ -21,7 +21,16 @@ function config-tmux()
 {
     echo -e "\nConfig tmux"
     replace $tmux_file_path/tmux.conf ~/.tmux.conf
+    mkdir -p ~/.tmux/plugins/
+    replace $tmux_file_path/tpm ~/.tmux/plugins/tpm
 }
+
+command -v tmux >/dev/null 2>&1 || { echo "cannot found tmux"; exit 1; }
+version=$(tmux -V | cut -d" " -f2)
+if [[ $version < "2.3" ]]; then
+    echo "this script need at least 2.3 version of tmux, please update"
+    exit 1
+fi
 
 check-env
 config-tmux
