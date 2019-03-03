@@ -21,6 +21,7 @@ function install-dependence()
 {
     # coc plugin dependence
     npm install -g vim-node-rpc
+    npm install -g dockerfile-language-server-nodejs
     # golang dependence
     go get -u -v github.com/nsf/gocode
     go get -u -v github.com/sourcegraph/go-langserver

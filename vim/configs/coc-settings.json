@@ -3,14 +3,15 @@
   "coc.preferences.snippetIndicator": "~<snippet>",
   "languageserver": {
     "golang": {
-      "command": "go-langserver",
-      "filetypes": ["go"],
-      "revealOutputChannelOn": "never",
-      "initializationOptions": {
-        "gocodeCompletionEnabled": true,
-        "diagnosticsEnabled": true,
-        "lintTool": "golint"
-      }
+      "command": "bingo",
+      "args": ["--diagnostics-style=instant"],
+      "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+      "filetypes": ["go"]
+    },
+    "dockerfile": {
+      "command": "docker-langserver",
+      "filetypes": ["dockerfile"],
+      "args": ["--stdio"]
     },
     "clangd": {
       "command": "clangd",

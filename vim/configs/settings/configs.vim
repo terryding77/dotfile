@@ -107,7 +107,7 @@ let g:ale_linters = {}
 let g:ale_linters['c'] = ['clangd'] " lsp
 let g:ale_linters['cpp'] = ['clangd'] " lsp
 let g:ale_linters['css'] = ['csslint']
-let g:ale_linters['go'] = ['golangserver', 'gofmt', 'golint', 'go build', 'gometalinter'] " lsp
+let g:ale_linters['go'] = ['bingo', 'gofmt', 'golint', 'go build', 'gometalinter'] " lsp
 let g:ale_go_gometalinter_options = '--fast'
 "let g:ale_linters['java'] = ['javalsp'] " lsp
 "let g:ale_java_javalsp_jar = 'javacs.jar'
@@ -179,3 +179,6 @@ call denite#custom#option('default', 'prompt', '输入搜索内容:')
 " coc
 " Close preview window when completion is done.
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+
+" ultisnips
+let g:UltiSnipsEditSplit='vertical'
