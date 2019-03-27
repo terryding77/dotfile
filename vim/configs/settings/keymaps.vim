@@ -82,7 +82,7 @@ nmap <leader>] <Plug>(ale_next_wrap)
 nmap <leader>e :ALEDetail<CR>
 nmap <leader>f :ALEFindReferences<CR>
 nmap <leader>g :ALEGoToDefinition<CR>
-nnoremap <C-]> :ALEGoToDefinition<CR>kj
+" nnoremap <C-]> :ALEGoToDefinition<CR>kj
 
 " vim-gh-line
 " 用于在git仓库的代码里直接通过快捷键进入仓库网站
@@ -96,7 +96,7 @@ nmap <leader>x :BD<CR>
 
 " ultisnips
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger='<tab>'
+" let g:UltiSnipsExpandTrigger='<tab>'
 let g:UltiSnipsJumpForwardTrigger='<tab>'
 let g:UltiSnipsJumpBackwardTrigger='<s-tab>'
 
@@ -113,11 +113,24 @@ nmap <F3> :NERDTreeToggle<CR>
 " Use <cr> for confirm completion, `<C-g>u` means break undo chain at current position.
 " Coc only does snippet and additional edit on confirm.
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-inoremap <expr> <Tab> pumvisible() ? "\<C-y>" : "\<Tab>"
+" inoremap <expr> <Tab> pumvisible() ? "\<C-y>" : "\<Tab>"
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#rpc#request('doKeymap', ['snippets-expand', "\<TAB>"])
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 
 " Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+" looks good for go mod package files
+nnoremap <C-]> :call CocAction('jumpDefinition')<CR>
 
 function! s:show_documentation()
   if &filetype == 'vim'

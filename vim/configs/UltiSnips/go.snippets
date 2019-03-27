@@ -3,20 +3,45 @@ snippet pl "fmt.Println" b
 fmt.Println(${1:ObjectToPrint})
 endsnippet
 
-# if err != nil {
-#	  XXX
-# }
-snippet iferr "judge error" b
-if err != nil {
-	${1:return err}
+# cobra func
+snippet cmdrun "cobra run func" w
+func ${1:}(cobraCmd *cobra.Command, args []string) {
+	${2:// TODO finish the run func}
 }
 endsnippet
 
-# if _, err = funcName(); err != nil {
-#	  XXX
-# }
-snippet ifverr "judge error" b
-if ${1:_, }err ${2::}= ${3:funcName()}; err != nil {
-	${4:return err}
+snippet cmdrune "cobra run func" w
+func ${1:}(cobraCmd *cobra.Command, args []string) (err error) {
+	${2:// TODO finish the run func}
+	return nil
 }
+endsnippet
+
+# some func to handle err
+snippet irn "if error not nil, do something"
+if err != nil {
+	${1: return err}
+}
+${2}
+endsnippet
+
+snippet ir0 "if error not nil, return"
+if err != nil {
+	return
+}
+${0}
+endsnippet
+
+snippet ir1 "if error not nil, return nil, err"
+if err != nil {
+	return nil, err
+}
+${0}
+endsnippet
+
+snippet ir2 "if error not nil, return nil, nil, err"
+if err != nil {
+	return nil, nil, err
+}
+${0}
 endsnippet

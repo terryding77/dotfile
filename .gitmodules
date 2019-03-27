@@ -19,3 +19,6 @@
 [submodule "zsh/custom/plugins/zsh-docker-aliases"]
 	path = zsh/custom/plugins/zsh-docker-aliases
 	url = https://github.com/akarzim/zsh-docker-aliases.git
+[submodule "zsh/custom/plugins/zsh-completions"]
+	path = zsh/custom/plugins/zsh-completions
+	url = https://github.com/zsh-users/zsh-completions

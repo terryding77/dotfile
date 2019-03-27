@@ -33,3 +33,5 @@ alias myproxy='export ALL_PROXY="socks5://127.0.0.1:1080";export http_proxy="soc
 alias unproxy='unset ALL_PROXY;unset http_proxy;unset https_proxy'
 
 bindkey '^n' autosuggest-accept
+
+alias -g CP='| clipcopy'
