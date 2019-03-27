@@ -20,6 +20,8 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'Shougo/neco-vim'
 Plug 'neoclide/coc-neco'
 Plug 'neoclide/coc.nvim', {'do': 'yarn install'}
+" CocInstall coc-css coc-html coc-json coc-tsserver coc-rls coc-highlight coc-emmet coc-snippets coc-yaml coc-pyls coc-vimtex coc-pairs
+
 """"" snippets
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'

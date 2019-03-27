@@ -107,7 +107,7 @@ let g:ale_linters = {}
 let g:ale_linters['c'] = ['clangd'] " lsp
 let g:ale_linters['cpp'] = ['clangd'] " lsp
 let g:ale_linters['css'] = ['csslint']
-let g:ale_linters['go'] = ['bingo', 'gofmt', 'golint', 'go build', 'gometalinter'] " lsp
+let g:ale_linters['go'] = ['bingo', 'gofmt', 'golint', 'go build', 'golangci-lint'] " lsp
 let g:ale_go_gometalinter_options = '--fast'
 "let g:ale_linters['java'] = ['javalsp'] " lsp
 "let g:ale_java_javalsp_jar = 'javacs.jar'
@@ -182,3 +182,6 @@ autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
 " ultisnips
 let g:UltiSnipsEditSplit='vertical'
+
+" filetype
+autocmd FileType yaml setlocal et sta sw=2 sts=2

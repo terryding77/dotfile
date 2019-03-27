@@ -2,8 +2,21 @@
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 
-if [[ $TERMINAL_EMULATOR == "JetBrains-JediTerm" ]]; then
-    ZSH_THEME="robbyrussell"
+if [[ $(tty) == /dev/tty* || $TerryUseInTTY == true ]]; then
+    export TerryUseInTTY=true
+else
+    export TerryUseInTTY=false
+fi
+
+if [[ $TERMINAL_EMULATOR == "JetBrains-JediTerm" || $TerryUseInTTY == true ]]; then
+    # ZSH_THEME="robbyrussell"
+    # below is copy from theme robbyrussell, and change for tty specific
+    local ret_status="%(?:%{$fg_bold[green]%}\$:%{$fg_bold[red]%})%{$reset_color%}"
+    PROMPT='%{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)${ret_status} '
+    ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[blue]%}git:(%{$fg[red]%}"
+    ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
+    ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%}%{$fg[yellow]%} x%{$fg[blue]%)"
+    ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"
 else
     ZSH_THEME="powerlevel9k/powerlevel9k"
 
