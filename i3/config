@@ -67,7 +67,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+# bindsym $mod+h split h
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -94,8 +94,8 @@ bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1"
-set $ws2 "2"
+set $ws1 "1:socialApps"
+set $ws2 "2:coding"
 set $ws3 "3"
 set $ws4 "4"
 set $ws5 "5"
@@ -170,3 +170,10 @@ bar {
 }
 
 bindsym $mod+shift+x exec i3lock
+exec fcitx
+exec ss-qt5
+exec telegram-desktop
+exec electronic-wechat
+exec_always feh --bg-scale ~/Pictures/Wallpapers/6bhg0qcvi1jy.png
+
+assign [class="Terminator"] $ws2
