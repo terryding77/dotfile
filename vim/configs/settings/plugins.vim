@@ -43,7 +43,7 @@ Plug 'qpkorr/vim-bufkill'
 " open new buffer or windows
 Plug 'Shougo/denite.nvim'
 " chinese input
-Plug 'lilydjwg/fcitx.vim'
+" Plug 'lilydjwg/fcitx.vim'
 " calculate startup's time
 Plug 'tweekmonster/startuptime.vim'
 " On-demand loading
