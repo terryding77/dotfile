@@ -25,6 +25,7 @@ alias sudo='sudo '
 if [ -n $EDITOR ]; then
     alias zshrc="$EDITOR ~/.zsh_custom ~/.zshrc $ZSH_CUSTOM/*.zsh $ZSH_CUSTOM/systems/*"
     alias vimrc="$EDITOR ~/.vim/settings/* ~/.vim/vimrc"
+    alias nvimrc="$EDITOR ~/.config/nvim/init.vim"
     alias tmuxrc="$EDITOR ~/.tmux.conf"
 fi
 
