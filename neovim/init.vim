@@ -5,6 +5,7 @@ set mouse=a
 " always show signcolumns
 set signcolumn=yes
 
+set ignorecase
 " 设置搜索高亮
 set hlsearch
 " 显示tab和空格
@@ -38,8 +39,8 @@ map <leader>sudo :w !sudo tee %<CR>
 vnoremap < <gv
 vnoremap > >gv
 
-nmap <leader>w :w<CR>
-let g:which_key_map.w = "保存当前标签页"
+nmap <leader>w :w<CR>:w<CR>
+let g:which_key_map.w = '保存当前标签页'
 if has('nvim')
     fu! OpenTerminal()
         " open split windows on the topleft
@@ -59,7 +60,7 @@ else
     endf
 endif
 nmap <leader>t :call OpenTerminal()<CR>
-let g:which_key_map.t = "打开命令行"
+let g:which_key_map.t = '打开命令行'
 
 "Keep search pattern at the center of the screen."
 nnoremap <silent> n nzz
@@ -85,8 +86,22 @@ call plug#begin('~/.vim/plugged')
 
     Plug 'itchyny/lightline.vim'
         let g:lightline = {
-              \ 'colorscheme': 'quantum',
-              \ }
+            \ 'colorscheme': 'quantum',
+            \ 'active': {
+            \   'left': [
+            \     [ 'mode', 'paste' ],
+            \     [ 'gitbranch', 'readonly', 'filename', 'modified', 'diagnostic', 'cocstatus'],
+            \   ],
+            \   'right':[
+            \     [ 'filetype', 'fileencoding', 'lineinfo', 'percent' ],
+            \     [ 'blame' ]
+            \   ],
+            \ },
+            \ 'component_function': {
+            \   'blame': 'LightlineGitBlame',
+            \   'cocstatus': 'coc#status'
+            \ },
+        \ }
 
     Plug 'mengelbrecht/lightline-bufferline'
         let g:lightline.tabline          = {'left': [['buffers']], 'right': [['close']]}
@@ -108,16 +123,16 @@ call plug#begin('~/.vim/plugged')
         nmap <leader>8 <Plug>lightline#bufferline#go(8)
         nmap <leader>9 <Plug>lightline#bufferline#go(9)
         nmap <leader>0 <Plug>lightline#bufferline#go(10)
-        let g:which_key_map.1 = "1-9数字跳转对应标签页"
-        let g:which_key_map.2 = "which_key_ignore"
-        let g:which_key_map.3 = "which_key_ignore"
-        let g:which_key_map.4 = "which_key_ignore"
-        let g:which_key_map.5 = "which_key_ignore"
-        let g:which_key_map.6 = "which_key_ignore"
-        let g:which_key_map.7 = "which_key_ignore"
-        let g:which_key_map.8 = "which_key_ignore"
-        let g:which_key_map.9 = "which_key_ignore"
-        let g:which_key_map.0 = "which_key_ignore"
+        let g:which_key_map.1 = '1-9数字跳转对应标签页'
+        let g:which_key_map.2 = 'which_key_ignore'
+        let g:which_key_map.3 = 'which_key_ignore'
+        let g:which_key_map.4 = 'which_key_ignore'
+        let g:which_key_map.5 = 'which_key_ignore'
+        let g:which_key_map.6 = 'which_key_ignore'
+        let g:which_key_map.7 = 'which_key_ignore'
+        let g:which_key_map.8 = 'which_key_ignore'
+        let g:which_key_map.9 = 'which_key_ignore'
+        let g:which_key_map.0 = 'which_key_ignore'
         augroup ThemeCommands
             autocmd BufWritePost,TextChanged,TextChangedI * call lightline#update()
         augroup END
@@ -125,25 +140,40 @@ call plug#begin('~/.vim/plugged')
 
     " 2 coding
     " linter and fixer
-    " Plug 'w0rp/ale'
+    Plug 'w0rp/ale'
+        let g:ale_linters = {
+                    \   'go': ['golangci-lint'],
+                    \}
+        let g:ale_fixers = {
+                    \   '*': ['remove_trailing_lines', 'trim_whitespace'],
+                    \}
+        let g:ale_fix_on_save = 1
     Plug 'editorconfig/editorconfig-vim'
     " completion
     """"" coc - use `npm install -g vim-node-rpc` before install
     Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
         autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
         let g:coc_global_extensions = [
-                    \ 'coc-yank', 'coc-git', 'coc-css', 'coc-html',
-                    \ 'coc-json', 'coc-tsserver', 'coc-rls', 'coc-highlight',
-                    \ 'coc-emmet', 'coc-snippets', 'coc-yaml', 'coc-pyls', 'coc-vimtex',
+                    \ 'coc-css',
+                    \ 'coc-emmet',
+                    \ 'coc-git',
+                    \ 'coc-highlight',
+                    \ 'coc-html',
+                    \ 'coc-json',
+                    \ 'coc-lists',
                     \ 'coc-pairs',
+                    \ 'coc-python',
+                    \ 'coc-rls',
+                    \ 'coc-snippets',
+                    \ 'coc-tsserver',
+                    \ 'coc-vimtex',
+                    \ 'coc-yaml',
+                    \ 'coc-yank',
                     \ ]
-        nmap <leader>{ <Plug>(coc-git-prevchunk)
-        let g:which_key_map['{'] = "前一个Git修改"
-        nmap <leader>} <Plug>(coc-git-nextchunk)
-        let g:which_key_map['}'] = "后一个Git修改"
-        nmap gs <Plug>(coc-git-chunkinfo)
 
+    " normal coc config
         nmap <silent> <c-]> <Plug>(coc-definition)
+        nmap <silent> <leader>s <Plug>(coc-codeaction)
         " Use K to show documentation in preview window
         nnoremap <silent> K :call <SID>show_documentation()<CR>
 
@@ -157,6 +187,63 @@ call plug#begin('~/.vim/plugged')
         " Highlight symbol under cursor on CursorHold
         autocmd CursorHold * silent call CocActionAsync('highlight')
         autocmd BufWritePost * silent call CocAction('format')
+
+    " coc-git
+        let g:which_key_map.g = { 'name' : '+git相关'}
+
+        let g:which_key_map.g['-'] = '前一个Git修改'
+        nmap <leader>g- <Plug>(coc-git-prevchunk)
+        let g:which_key_map.g['+'] = '后一个Git修改'
+        nmap <leader>g+ <Plug>(coc-git-nextchunk)
+        nmap <leader>g= <Plug>(coc-git-nextchunk)
+
+        let g:which_key_map.g['k'] = '显示chunkinfo'
+        nmap <leader>gk <Plug>(coc-git-chunkinfo)
+
+        function! LightlineGitBlame() abort
+            let blame = get(b:, 'coc_git_blame', '')
+            if blame == ''
+                let blame = ''
+            else
+                let blame = '本行修改者' . blame
+            endif
+            " return blame
+            return winwidth(0) > 120 ? blame : ''
+        endfunction
+
+    " coc-lists
+		let g:which_key_map.f = { 'name' : '+搜索' }
+
+        let g:which_key_map.f['f'] = '搜索文件'
+        nnoremap <silent> <Leader>ff :CocList gfiles<CR>
+
+        let g:which_key_map.f['d'] = '搜索代码'
+        command! -nargs=+ -complete=custom,s:GrepArgs Ag exe 'CocList grep '.<q-args>
+        function! s:GrepArgs(...)
+            let list = ['-i', '-w', '-word',
+                        \ '-e', '-regex', '-u', '-skip-vcs-ignores', '-t', '-extension']
+            return join(list, "\n")
+        endfunction
+        nnoremap <silent> <Leader>fd :CocList grep<CR>
+
+		let g:which_key_map.f['l'] = '搜索已打开文件列表'
+		nnoremap <silent> <Leader>fl :CocList buffers<CR>
+
+		let g:which_key_map.f['m'] = '查找vim快捷键'
+		nnoremap <silent> <Leader>fm :CocList maps<CR>
+
+		let g:which_key_map.f['r'] = '重置上次搜索窗口'
+		nnoremap <silent> <Leader>fr :CocListResume<CR>
+
+    " coc-pair
+        " disable pairs for markdown file
+        autocmd FileType markdown let b:coc_pairs_disabled = ['`']
+        " disable pairs for vim file
+        autocmd FileType vim let b:coc_pairs_disabled = ['`', '"']
+
+    " coc-yank
+		let g:which_key_map.f['y'] = '查找剪切板'
+        nnoremap <silent> <leader>fy  :<C-u>CocList -A --normal yank<cr>
 
     """"" snippets
     Plug 'SirVer/ultisnips'
@@ -183,7 +270,6 @@ call plug#begin('~/.vim/plugged')
         nnoremap <silent> <leader>ge :Gedit<CR>
         " Mnemonic _i_nteractive
         nnoremap <silent> <leader>ga :Git add -p %<CR>
-        nnoremap <silent> <leader>gg :SignifyToggle<CR>
 
     " compile and run
     Plug 'thinca/vim-quickrun'
@@ -205,8 +291,7 @@ call plug#begin('~/.vim/plugged')
         let g:gh_line_map_default = 0
         " Use your own mapping:
         let g:gh_line_map = '<leader>gh'
-        let g:which_key_map.g = { 'name' : '+git相关'}
-        let g:which_key_map.g.h = "跳转到代码web网页"
+        let g:which_key_map.g.h = '跳转到代码web网页'
         " vim-gh-line
         " 用于在git仓库的代码里直接通过快捷键进入仓库网站
         " Use a custom program to open link:
@@ -222,9 +307,11 @@ call plug#begin('~/.vim/plugged')
         " By default timeoutlen is 1000 ms
         set timeoutlen=500
         let g:mapleader = "\<Space>"
-        let g:maplocalleader = ","
-        nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
-        nnoremap <silent> <localleader> :WhichKey ','<CR> vnoremap <silent> <leader> :<c-u>WhichKeyVisual '<Space>'<CR>
+        let g:maplocalleader = ','
+        nnoremap <silent> <leader> :<c-u>WhichKey '<Space>'<CR>
+        vnoremap <silent> <leader> :<c-u>WhichKeyVisual '<Space>'<CR>
+        nnoremap <localleader> :<c-u>WhichKey  ','<CR>
+        vnoremap <localleader> :<c-u>WhichKeyVisual  ','<CR>
 
     " tmux window
     Plug 'christoomey/vim-tmux-navigator'
@@ -239,30 +326,8 @@ call plug#begin('~/.vim/plugged')
     Plug 'qpkorr/vim-bufkill'
         " Bufkill
         nmap <leader>x :BD<CR>
-        let g:which_key_map.x = "关闭当前标签页"
+        let g:which_key_map.x = '关闭当前标签页'
 
-    Plug 'Shougo/denite.nvim'
-		" from spacevim
-		let g:which_key_map.f = { 'name' : '+搜索' }
-		nnoremap <silent> <Leader>f<Space> :Denite menu:CustomKeyMaps<CR>
-		let g:which_key_map.f[' '] = "查找快捷键"
-		nnoremap <silent> <Leader>fe :<C-u>Denite register<CR>
-		let g:which_key_map.f['e'] = "搜索寄存器"
-		" nnoremap <silent> <Leader>fh :<C-u>Denite neoyank<CR>
-		" let g:which_key_map.f['h'] = "搜索 history/yank"
-		nnoremap <silent> <Leader>fj :<C-u>Denite jump<CR>
-		let g:which_key_map.f['j'] = "搜索跳转和修改"
-		" nnoremap <silent> <Leader>fl :<C-u>Denite location_list<CR>
-		" let g:which_key_map.f['l'] = "搜索 location list"
-		nnoremap <silent> <Leader>fm :<C-u>Denite output:message<CR>
-		let g:which_key_map.f['m'] = "搜索log内容"
-		" nnoremap <silent> <Leader>fo  :<C-u>Denite outline<CR>
-		" let g:which_key_map.f['o'] = "搜索函数列表"
-		" nnoremap <silent> <Leader>fp  :<C-u>Denite menu:AddedPlugins<CR>)
-		" nnoremap <silent> <Leader>fq :<C-u>Denite quickfix<CR>
-		" let g:which_key_map.f['q'] = "搜索 quickfix list"
-		nnoremap <silent> <Leader>fr :<C-u>Denite -resume<CR>
-		let g:which_key_map.f['r'] = "重置上次搜索窗口"
     " chinese input
     " Plug 'lilydjwg/fcitx.vim'
     " calculate startup's time
@@ -274,39 +339,9 @@ call plug#begin('~/.vim/plugged')
 call plug#end()
 
 colorscheme quantum
+highlight CocErrorHighlight ctermfg=Red  guifg=#ff0000
+highlight CocFloating ctermfg=Yellow  guifg=#B8860B
+
 
 " whichkey
-call which_key#register('<Space>', "g:which_key_map")
-
-" denite
-" Change mappings.修改映射
-call denite#custom#map('insert', '<C-j>', '<denite:move_to_next_line>', 'noremap')
-call denite#custom#map('insert', '<tab>', '<denite:move_to_next_line>', 'noremap')
-call denite#custom#map('insert', '<C-k>', '<denite:move_to_previous_line>', 'noremap')
-
-" 使用git进行项目文件搜索
-call denite#custom#alias('source', 'file/rec/git', 'file/rec')
-call denite#custom#var('file/rec', 'command', ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
-call denite#custom#var('file/rec/git', 'command', ['git', 'ls-files', '-co', '--exclude-standard'])
-nnoremap <silent> <Leader>ff :<C-u>Denite `finddir('.git', ';') != '' ? 'file/rec/git' : 'file/rec'`<cr>
-let g:which_key_map.f['f'] = "搜索文件"
-
-" 使用ag进行全文搜索
-nnoremap <silent> <Leader>fd :DeniteProjectDir -highlight-mode-insert=WildMenu -buffer-name=grep grep:::!<CR>
-let g:which_key_map.f['d'] = "搜索代码"
-call denite#custom#source('grep', 'matchers', ['matcher_regexp'])
-call denite#custom#var('grep', 'command', ['ag'])
-call denite#custom#var('grep', 'default_opts', ['-i', '--vimgrep'])
-call denite#custom#var('grep', 'recursive_opts', [])
-call denite#custom#var('grep', 'pattern_opt', [])
-call denite#custom#var('grep', 'separator', ['--'])
-call denite#custom#var('grep', 'final_opts', [])
-
-" Change default prompt
-call denite#custom#option('default', {
-			\ 'prompt': '输入搜索内容：',
-			\ 'winheight': '25',
-            \ 'highlight_mode_insert': 'WildMenu',
-			\ 'split': 'floating',
-            \ })
-
+call which_key#register('<Space>', 'g:which_key_map')

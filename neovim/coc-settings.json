@@ -1,22 +1,87 @@
 {
-  "coc.preferences.diagnostic.enable": true,
-  "coc.preferences.diagnostic.refreshAfterSave": true,
-  "coc.preferences.diagnostic.displayByAle": true,
-  "coc.preferences.snippetIndicator": "~<snippet>",
-  "languageserver": {
-    "golang": {
-       "command": "gopls",
-       "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
-       "filetypes": ["go"]
+    "diagnostic.enable": true,
+    "diagnostic.level": "hint",
+    "diagnostic.checkCurrentLine": true,
+    "diagnostic.messageTarget": "float",
+    "diagnostic.refreshAfterSave": true,
+    "diagnostic.virtualText": true,
+    "diagnostic.virtualTextPrefix": "        提示：",
+    "diagnostic.enableSign": true,
+    "diagnostic.enableMessage": "always",
+    "diagnostic.errorSign": "✗",
+    "diagnostic.warningSign": "",
+    "diagnostic.infoSign": "",
+    "diagnostic.hintSign": "",
+    "suggest.snippetIndicator": "~<snippet>",
+    "coc.preferences.rootPatterns": [
+        ".vim",
+        ".git",
+        ".hg",
+        ".projections.json"
+    ],
+    "languageserver": {
+        "golang": {
+            "command": "gopls",
+            "rootPatterns": [
+                "go.mod",
+                ".vim/",
+                ".git/",
+                ".hg/"
+            ],
+            "filetypes": [
+                "go"
+            ]
+        },
+        "golang.bak": {
+            "command": "bingo",
+            "args": [
+                "--diagnostics-style=instant"
+            ],
+            "rootPatterns": [
+                "go.mod",
+                ".vim/",
+                ".git/",
+                ".hg/"
+            ],
+            "filetypes": [
+                "go"
+            ]
+        },
+        "dockerfile": {
+            "command": "docker-langserver",
+            "filetypes": [
+                "dockerfile"
+            ],
+            "args": [
+                "--stdio"
+            ]
+        },
+        "clangd": {
+            "command": "clangd",
+            "filetypes": [
+                "c",
+                "cpp",
+                "objc",
+                "objcpp"
+            ]
+        }
     },
-    "dockerfile": {
-      "command": "docker-langserver",
-      "filetypes": ["dockerfile"],
-      "args": ["--stdio"]
+    "git.enableGutters": true,
+    "git.addGlameToVirtualText": true,
+    "git.addGlameToBufferVar": true,
+    "list.insertMappings": {
+        "<C-r>": "do:refresh",
+        "<C-c>": "do:exit",
+        "<C-s>": "do:switch",
+        "<C-n>": "normal:j",
+        "<C-p>": "normal:k",
+        "<C-x>": "do:stop"
     },
-    "clangd": {
-      "command": "clangd",
-      "filetypes": ["c", "cpp", "objc", "objcpp"]
-    }
-  }
+    "list.normalMappings": {
+        "<C-r>": "do:refresh",
+        "<C-c>": "do:exit",
+        "<C-x>": "do:stop"
+    },
+    "list.indicator": "请输入:",
+    "end": "用这行当结尾，保证前面所有行都有逗号结尾"
 }

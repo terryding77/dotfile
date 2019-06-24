@@ -5,3 +5,4 @@
 .ropeproject/
 /configs/swap/
 /configs/autoload/plug.vim.old
+/configs/sessions/
