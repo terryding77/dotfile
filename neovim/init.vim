@@ -18,11 +18,20 @@ set relativenumber
 
 " 设置tab和空格样式
 set listchars=tab:\|\ ,nbsp:%,trail:-
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set expandtab
 set backspace=indent,eol,start
+set tabstop=4     " ts=4
+set softtabstop=4 " sts=4
+set shiftwidth=4  " sw=4
+set expandtab     " et
+set smarttab      " sta
+if has('autocmd')
+    " 根据具体文件格式设置缩进
+    augroup ag_filetab
+        autocmd FileType javascript setlocal ts=2 sts=2 sw=2 et sta
+        autocmd FileType typescript setlocal ts=2 sts=2 sw=2 et sta
+        autocmd FileType yaml       setlocal ts=2 sts=2 sw=2 et sta
+    augroup end
+endif
 
 " set mapleader 将空格作为leader键
 let mapleader = ' '
@@ -69,24 +78,21 @@ nnoremap <silent> * *zz
 nnoremap <silent> # #zz
 nnoremap <silent> g* g*zz
 
-" filetype
-autocmd FileType yaml setlocal et sta sw=2 sts=2
-
-
 " 使用vim-plug安装插件
 call plug#begin('~/.vim/plugged')
     " appearance设置主题及颜色
+    Plug 'morhetz/gruvbox'
     Plug 'tyrannicaltoucan/vim-quantum'
         "" If you have vim >=8.0 or Neovim >= 0.1.5
-        if (has('termguicolors'))
-          set termguicolors
-        endif
-        set background=dark
-        let g:quantum_black=1
+        " if (has('termguicolors'))
+        "   set termguicolors
+        " endif
+        " set background=dark
+        " let g:quantum_black=1
 
     Plug 'itchyny/lightline.vim'
         let g:lightline = {
-            \ 'colorscheme': 'quantum',
+            \ 'colorscheme': 'gruvbox',
             \ 'active': {
             \   'left': [
             \     [ 'mode', 'paste' ],
@@ -202,17 +208,17 @@ call plug#begin('~/.vim/plugged')
 
         function! LightlineGitBlame() abort
             let blame = get(b:, 'coc_git_blame', '')
-            if blame == ''
-                let blame = ''
+            if len(blame) == 0
+                let blame = 'Not Committed Yet'
             else
-                let blame = '本行修改者' . blame
+                let blame = blame
             endif
             " return blame
             return winwidth(0) > 120 ? blame : ''
         endfunction
 
     " coc-lists
-		let g:which_key_map.f = { 'name' : '+搜索' }
+        let g:which_key_map.f = { 'name' : '+搜索' }
 
         let g:which_key_map.f['f'] = '搜索文件'
         nnoremap <silent> <Leader>ff :CocList gfiles<CR>
@@ -226,14 +232,14 @@ call plug#begin('~/.vim/plugged')
         endfunction
         nnoremap <silent> <Leader>fd :CocList grep<CR>
 
-		let g:which_key_map.f['l'] = '搜索已打开文件列表'
-		nnoremap <silent> <Leader>fl :CocList buffers<CR>
+        let g:which_key_map.f['l'] = '搜索已打开文件列表'
+        nnoremap <silent> <Leader>fl :CocList buffers<CR>
 
-		let g:which_key_map.f['m'] = '查找vim快捷键'
-		nnoremap <silent> <Leader>fm :CocList maps<CR>
+        let g:which_key_map.f['m'] = '查找vim快捷键'
+        nnoremap <silent> <Leader>fm :CocList maps<CR>
 
-		let g:which_key_map.f['r'] = '重置上次搜索窗口'
-		nnoremap <silent> <Leader>fr :CocListResume<CR>
+        let g:which_key_map.f['r'] = '重置上次搜索窗口'
+        nnoremap <silent> <Leader>fr :CocListResume<CR>
 
     " coc-pair
         " disable pairs for markdown file
@@ -242,8 +248,12 @@ call plug#begin('~/.vim/plugged')
         autocmd FileType vim let b:coc_pairs_disabled = ['`', '"']
 
     " coc-yank
-		let g:which_key_map.f['y'] = '查找剪切板'
+        let g:which_key_map.f['y'] = '查找剪切板'
         nnoremap <silent> <leader>fy  :<C-u>CocList -A --normal yank<cr>
+    " coc custom extensions
+        xmap <silent> <F5> <Plug>(coc-repl-sendvisualtext)
+        nmap <silent> <F5> <Plug>(coc-repl-sendnormaltext)
+        imap <silent> <F5> <c-o><Plug>(coc-repl-sendnormaltext)
 
     """"" snippets
     Plug 'SirVer/ultisnips'
@@ -315,12 +325,12 @@ call plug#begin('~/.vim/plugged')
 
     " tmux window
     Plug 'christoomey/vim-tmux-navigator'
-		" set ctrl-hjkl to switch splited windows
-		" 增加ctrl键加hjkl进行窗口间的移动
-		map <c-h> <c-w>h
-		map <c-j> <c-w>j
-		map <c-k> <c-w>k
-		map <c-l> <c-w>l
+        " set ctrl-hjkl to switch splited windows
+        " 增加ctrl键加hjkl进行窗口间的移动
+        map <c-h> <c-w>h
+        map <c-j> <c-w>j
+        map <c-k> <c-w>k
+        map <c-l> <c-w>l
 
     " delete buffer
     Plug 'qpkorr/vim-bufkill'
@@ -336,9 +346,16 @@ call plug#begin('~/.vim/plugged')
     Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
         " nerdtree
         nmap <F3> :NERDTreeToggle<CR>
+
+    Plug 'voldikss/vim-translate-me'
+        nmap <silent> <c-t> <Plug>TranslateW
+        vmap <silent> <c-t> <Plug>TranslateWV
+        let g:vtm_default_engines=['ciba', 'youdao', 'google']
+        let g:vtm_default_mapping=0
+
 call plug#end()
 
-colorscheme quantum
+colorscheme gruvbox
 highlight CocErrorHighlight ctermfg=Red  guifg=#ff0000
 highlight CocFloating ctermfg=Yellow  guifg=#B8860B
 
