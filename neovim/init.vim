@@ -82,6 +82,11 @@ nnoremap <silent> g* g*zz
 call plug#begin('~/.vim/plugged')
     " appearance设置主题及颜色
     Plug 'morhetz/gruvbox'
+    Plug 'taigacute/gruvbox9'
+        set background=dark
+        let g:gruvbox_filetype_hi_groups = 1
+        let g:gruvbox_transp_bg = 1
+
     Plug 'tyrannicaltoucan/vim-quantum'
         "" If you have vim >=8.0 or Neovim >= 0.1.5
         " if (has('termguicolors'))
@@ -92,7 +97,7 @@ call plug#begin('~/.vim/plugged')
 
     Plug 'itchyny/lightline.vim'
         let g:lightline = {
-            \ 'colorscheme': 'gruvbox',
+            \ 'colorscheme': 'gruvbox9',
             \ 'active': {
             \   'left': [
             \     [ 'mode', 'paste' ],
@@ -244,6 +249,8 @@ call plug#begin('~/.vim/plugged')
     " coc-pair
         " disable pairs for markdown file
         autocmd FileType markdown let b:coc_pairs_disabled = ['`']
+        " disable pairs for golang file
+        autocmd FileType go let b:coc_pairs_disabled = ['<']
         " disable pairs for vim file
         autocmd FileType vim let b:coc_pairs_disabled = ['`', '"']
 
@@ -355,7 +362,7 @@ call plug#begin('~/.vim/plugged')
 
 call plug#end()
 
-colorscheme gruvbox
+colorscheme gruvbox9
 highlight CocErrorHighlight ctermfg=Red  guifg=#ff0000
 highlight CocFloating ctermfg=Yellow  guifg=#B8860B
 

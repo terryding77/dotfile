@@ -32,6 +32,7 @@ fi
 #alias myproxy='export http_proxy="http://172.16.0.101:8086";export https_proxy="http://172.16.0.101:8086"'
 # alias myproxy='export http_proxy="http://127.0.0.1:1081";export https_proxy="http://127.0.0.1:1081"'
 alias myproxy='export ALL_PROXY="socks5://127.0.0.1:1080";export http_proxy="socks5://127.0.0.1:1080";export https_proxy="socks5://127.0.0.1:1080"'
+alias myproxy88='export ALL_PROXY="socks5://127.0.0.1:1088";export http_proxy="socks5://127.0.0.1:1088";export https_proxy="socks5://127.0.0.1:1088"'
 alias unproxy='unset ALL_PROXY;unset http_proxy;unset https_proxy'
 
 bindkey '^n' autosuggest-accept
