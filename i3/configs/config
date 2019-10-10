@@ -13,7 +13,7 @@ set $mod Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 8
+font pango:monospace 16
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -34,7 +34,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
-bindsym $alt+F4 kill
+# bindsym $alt+F4 kill
 
 # start dmenu (a program launcher)
 # bindsym $mod+d exec dmenu_run
@@ -45,6 +45,13 @@ bindsym Mod4+space exec rofi -show run
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
+# 设置边框大小
+for_window [class=".*"] border pixel 5
+hide_edge_borders both
+
+# Gaps size 设置间隙大小
+gaps inner 18
+gaps outer 0
 # 以 client.focused client.focused_inactive client.unfocused client.urgent client.placeholder client.background 开头的是设置对应的东西的颜色的。
 # class                 border  backgr. text    indicator child_border
 client.focused          #4c7899 #00ff00 #ffffff #00ff00   #00ff00
@@ -188,6 +195,38 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# combine window
+mode "combine" {
+    # These bindings trigger as soon as you enter the resize mode
+
+    bindsym h mode "default"; exec "i3-msg 'split horizontal, focus left, move right, layout stacking'"
+    bindsym j mode "default"; exec "i3-msg 'split vertical, focus down, move up, layout stacking'"
+    bindsym k mode "default"; exec "i3-msg 'split vertical, focus up, move down, layout stacking'"
+    bindsym l mode "default"; exec "i3-msg 'split horizontal, focus right, move left, layout stacking'"
+
+    # same bindings, but for the arrow keys
+    bindsym Left  mode "default"; exec "i3-msg 'split horizontal, focus left, move right, layout stacking'"
+    bindsym Down  mode "default"; exec "i3-msg 'split vertical, focus down, move up, layout stacking'"
+    bindsym Up    mode "default"; exec "i3-msg 'split vertical, focus up, move down, layout stacking'"
+    bindsym Right mode "default"; exec "i3-msg 'split horizontal, focus right, move left, layout stacking'"
+
+    # back to normal: Enter or Escape or $mod+r
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+r mode "default"
+}
+
+bindsym $mod+c mode "combine"
+# bindsym $mod+c exec "i3-msg 'split horizontal, focus right, move left, layout stacking'"
+# bindsym $mod+c layout staking
+#", focus right, move left, layout staking'"
+
+# control sound
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -c 1 -q set Master 2dB+ unmute
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -c 1 -q set Master 2dB- unmute
+bindsym XF86AudioMute exec --no-startup-id amixer -c 1 -q set Master toggle set Headphone toggle
+
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
@@ -200,10 +239,11 @@ exec fcitx
 exec ss-qt5
 exec telegram-desktop
 exec electronic-wechat
-exec_always feh --bg-scale '~/Pictures/Wallpapers/Light mode JPEG.jpg'
+exec_always feh --bg-scale ~/Pictures/Wallpapers/Light\ mode\ JPEG.jpg
+
+# Compton
+exec_always --no-startup-id "killall -q compton; compton --config ~/.config/i3/compton.conf"
 
 # assign [class="Terminator"] $ws2
-for_window [title="jetbrains-goland"] floating enable
-
-for_window [class=".*"] border pixel 10
-hide_edge_borders both
+assign [class="jetbrains-goland"] $ws3
+for_window [class="jetbrains-goland"] floating enable
