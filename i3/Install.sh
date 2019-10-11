@@ -21,6 +21,7 @@ function config-i3()
 {
     echo -e "\nConfig i3"
     replace $i3_file_path/configs ~/.config/i3
+    replace $i3_file_path/configs/rofi ~/.config/rofi
 }
 
 check-env
