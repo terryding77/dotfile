@@ -196,7 +196,8 @@ call plug#begin('~/.vim/plugged')
           endif
         endfunction
         " Highlight symbol under cursor on CursorHold
-        autocmd CursorHold * silent call CocActionAsync('highlight')
+        autocmd CursorHold * silent call CocAction('highlight')
+        autocmd BufWritePost * silent call CocAction('doQuickfix')
         autocmd BufWritePost * silent call CocAction('format')
 
     " coc-git

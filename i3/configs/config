@@ -75,6 +75,9 @@ focus_follows_mouse no
 # 以 default_orientation 开头的是设置新工作区默认打开方向。
 default_orientation auto
 
+# 截图
+bindsym Print exec scrot $HOME/Pictures/ScreenShot/`date +%Y-%m-%d_%H:%M:%S`.png
+
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -225,7 +228,8 @@ bindsym $mod+c mode "combine"
 # control sound
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -c 1 -q set Master 2dB+ unmute
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer -c 1 -q set Master 2dB- unmute
-bindsym XF86AudioMute exec --no-startup-id amixer -c 1 -q set Master toggle set Headphone toggle
+bindsym XF86AudioMute        exec --no-startup-id amixer -c 1 -q set Master toggle && amixer -c 1 -q set Headphone toggle && amixer -c 1 -q set Front toggle
+# bindsym XF86AudioMute exec --no-startup-id pavucontrol
 
 
 # Start i3bar to display a workspace bar (plus the system information i3status
@@ -261,9 +265,9 @@ bar {
     # 是否隐藏
     #  mode hide
     # 拆解工作区名（隐藏前面的1:2:3:……）
-    strip_workspace_numbers no
+    strip_workspace_numbers yes
     # 定义分隔符∥
-    separator_symbol "    "
+    separator_symbol "  "
 
 
 }
@@ -279,12 +283,12 @@ exec --no-startup-id i3-msg ' \
     exec synology-drive; \
     exec chromium; \
     exec solaar; \
-    exec teamviewer; \
     exec telegram-desktop; \
     exec sleep 1s && electronic-wechat; \
-    exec sleep 5s && dingtalk; \
-    exec sleep 6s && netease-cloud-music; \
+    exec sleep 8s && dingtalk; \
+    exec sleep 8s && netease-cloud-music; \
 '
+    # exec sleep 3s && teamviewer; \ # for security problem
 exec terminator;
 
 # 设置壁纸
@@ -299,5 +303,10 @@ assign [class="Terminator"] $ws2
 # assign [class="netease-cloud-music"] $ws1
 # assign [class=] $ws1
 
-assign [class="jetbrains-goland"] $ws3
-for_window [class="jetbrains-goland"] floating enable
+assign [class="^jetbrains-.+"] $ws3
+# for_window [class="^jetbrains-.+"] floating enable
+for_window [class="^jetbrains-.+"][window_type=dialog] focus
+for_window [class="java-lang-Thread"] floating enable
+for_window [class="Solaar"] floating enable
+for_window [class="shadowsocks-qt5"] floating enable
+for_window [class="Pavucontrol"] floating enable
