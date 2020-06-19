@@ -30,7 +30,7 @@ font pango:monospace 16
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+#bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -76,7 +76,10 @@ focus_follows_mouse no
 default_orientation auto
 
 # 截图
-bindsym Print exec scrot $HOME/Pictures/ScreenShot/`date +%Y-%m-%d_%H:%M:%S`.png
+bindsym Print exec gnome-screenshot -i
+# ctrl+alt+a 选区截图
+bindsym --release Control+$mod+a exec import png:- | xclip -selection clipboard -t image/png
+
 
 # change focus
 bindsym $mod+h focus left
@@ -275,38 +278,43 @@ bar {
 bindsym $mod+shift+x exec i3lock -i /opt/lockscreen.png
 bindsym Mod4+l exec i3lock -i /opt/lockscreen.png
 exec fcitx
-exec ss-qt5
-exec --no-startup-id i3-msg ' \
-    workspace $ws1; \
-    split v; \
-    append_layout ~/.config/i3/workspace-1.json; \
-    exec synology-drive; \
-    exec chromium; \
-    exec solaar; \
-    exec telegram-desktop; \
-    exec sleep 1s && electronic-wechat; \
-    exec sleep 8s && dingtalk; \
-    exec sleep 8s && netease-cloud-music; \
-'
-    # exec sleep 3s && teamviewer; \ # for security problem
+# exec ss-qt5
+# generate layout
+# i3-save-tree --workspace 1 > ~/.config/i3/workspace-1.json
+# exec --no-startup-id i3-msg ' \
+#     workspace $ws1; \
+#     split v; \
+#     append_layout ~/.config/i3/workspace-1.json; \
+#     exec synology-drive; \
+#     exec chromium; \
+#     exec solaar; \
+#     exec telegram-desktop; \
+#     exec sleep 1s && electronic-wechat; \
+#     exec sleep 8s && dingtalk; \
+#     exec sleep 8s && netease-cloud-music; \
+# '
+#     # exec sleep 3s && teamviewer; \ # for security problem
 exec terminator;
 
 # 设置壁纸
-exec_always --no-startup-id feh --bg-scale ~/Pictures/Wallpapers/Light\ mode\ JPEG.jpg
+# exec_always --no-startup-id feh --bg-scale ~/Pictures/Wallpapers/Light\ mode\ JPEG.jpg
+exec_always --no-startup-id feh --bg-scale ~/Pictures/Wallpapers/work.jpg
 
 
 # Compton
 exec_always --no-startup-id "killall -q compton; compton --config ~/.config/i3/compton.conf"
 
-assign [class="Terminator"] $ws2
+# assign [class="Terminator"] $ws2
 # assign [class="electronic-wechat"] $ws1
 # assign [class="netease-cloud-music"] $ws1
 # assign [class=] $ws1
 
-assign [class="^jetbrains-.+"] $ws3
+# assign [class="^jetbrains-.+"] $ws3
 # for_window [class="^jetbrains-.+"] floating enable
 for_window [class="^jetbrains-.+"][window_type=dialog] focus
+for_window [instance="sun-awt-X11-XWindowPeer"] border pixel 0
+
 for_window [class="java-lang-Thread"] floating enable
 for_window [class="Solaar"] floating enable
-for_window [class="shadowsocks-qt5"] floating enable
+# for_window [class="shadowsocks-qt5"] floating enable
 for_window [class="Pavucontrol"] floating enable

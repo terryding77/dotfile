@@ -22,6 +22,7 @@
             "swallows": [
                 {
                     "class": "^Chromium$",
+                    "instance": "^chromium$",
                     "window_role": "^browser$"
                 }
             ],
@@ -32,16 +33,17 @@
             "current_border_width": 5,
             "floating": "auto_off",
             "geometry": {
-                "height": 40,
-                "width": 72,
+                "height": 100,
+                "width": 200,
                 "x": 0,
                 "y": 0
             },
-            "name": "TeamViewer",
+            "name": "*East Music — Cloud Music",
             "percent": 0.3,
             "swallows": [
                 {
-                    "class": "^TeamViewer$"
+                    "class": "^netease\\-cloud\\-music$",
+                    "instance": "^netease\\-cloud\\-music$"
                 }
             ],
             "type": "con"
@@ -50,7 +52,7 @@
 }
 
 {
-    // splith split container with 4 children
+    // splith split container with 3 children
     "border": "normal",
     "floating": "auto_off",
     "layout": "splith",
@@ -67,31 +69,13 @@
                 "x": 974,
                 "y": 1078
             },
-            "name": "Telegram*",
-            "percent": 0.25,
+            "name": "Telegram",
+            "percent": 0.333333333333333,
             "swallows": [
                 {
-                    "class": "^TelegramDesktop$"
-                }
-            ],
-            "type": "con"
-        },
-        {
-            "border": "pixel",
-            "current_border_width": 5,
-            "floating": "auto_off",
-            "geometry": {
-                "height": 600,
-                "width": 960,
-                "x": 1440,
-                "y": 780
-            },
-            "name": "DingTalk",
-            "percent": 0.25,
-            "swallows": [
-                {
-                    "class": "^dingtalk$",
-                    "window_role": "^browser\\-window$"
+                    "class": "^TelegramDesktop$",
+                    "instance": "^telegram\\-desktop$",
+                    "title": "^Telegram$"
                 }
             ],
             "type": "con"
@@ -107,10 +91,12 @@
                 "y": 780
             },
             "name": "Electronic WeChat",
-            "percent": 0.25,
+            "percent": 0.333333333333333,
             "swallows": [
                 {
                     "class": "^electronic\\-wechat$",
+                    "instance": "^electronic\\-wechat$",
+                    "title": "^Electronic\\ WeChat$",
                     "window_role": "^browser\\-window$"
                 }
             ],
@@ -121,16 +107,19 @@
             "current_border_width": 5,
             "floating": "auto_off",
             "geometry": {
-                "height": 100,
-                "width": 200,
-                "x": 0,
-                "y": 0
+                "height": 600,
+                "width": 960,
+                "x": 1440,
+                "y": 780
             },
-            "name": "*Cloud Music",
-            "percent": 0.25,
+            "name": "DingTalk",
+            "percent": 0.333333333333333,
             "swallows": [
                 {
-                    "class": "^netease\\-cloud\\-music$"
+                    "class": "^dingtalk$",
+                    "instance": "^dingtalk$",
+                    "title": "^DingTalk$",
+                    "window_role": "^browser\\-window$"
                 }
             ],
             "type": "con"
